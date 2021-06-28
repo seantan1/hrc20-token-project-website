@@ -1,0 +1,14 @@
+.dinoland {
+    position: relative;
+    height: 700px;
+}
+
+.dinoland-inner-container {
+    
+}
+
+#dino-avatar-blue {
+    position: absolute;
+    bottom: 0px;
+    left: 10px;
+}
