@@ -32,3 +32,17 @@
     padding: 1em;
     text-align: center;
 }
+
+.tokenomics-info-container {
+    padding-top: 50px;
+}
+
+.tokenomics-info-container h1 {
+    text-align: left !important;
+    font-size:35px;
+}
+
+.tokenomics-info-container p {
+    font-size:20px;
+    font-family: monospace;
+}
