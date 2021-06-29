@@ -30,12 +30,13 @@
     text-align: center;
 }
 
-.stats-container h3 {
-    font-size: 20px;
+.stats-container h1 {
+    font-size: 33px;
     font-family: monospace;
 }
 
-.stats-container h3 {
-    font-size: 20px;
+.stats-container p {
+    font-size: 25px;
     font-family: monospace;
+    color:grey;
 } 

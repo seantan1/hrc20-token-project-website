@@ -13,30 +13,16 @@ const TokenStatistics = () => {
                 <div className="stats-section-inner-frame">
                     <div className="stats-section-inner-frame-inner">
                         <div className="stats-container">
-                            <h3>Unique Holders</h3>
+                            <h1>Unique Holders</h1>
                             <p>1,306</p>
                         </div>
                         <div className="stats-container">
-                            <h3>Locked in Vault</h3>
+                            <h1>Locked in Vault</h1>
                             <p>567,890 tokens</p>
                         </div>
                         <div className="stats-container">
-                            <h3>Distributed rewards</h3>
+                            <h1>Distributed rewards</h1>
                             <p>123,456 tokens</p>
-                        </div>
-                    </div>
-                    <div className="stats-section-inner-frame-inner">
-                        <div className="stats-container">
-                            <h3>Total Marketcap</h3>
-                            <p>$10,000</p>
-                        </div>
-                        <div className="stats-container">
-                            <h3>Total supply</h3>
-                            <p>10,000,000 tokens</p>
-                        </div>
-                        <div className="stats-container">
-                            <h3>Circulating supply</h3>
-                            <p>1,234,567 tokens</p>
                         </div>
                     </div>
                 </div>

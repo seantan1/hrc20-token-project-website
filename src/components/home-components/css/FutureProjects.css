@@ -28,7 +28,7 @@
     width:30%;
     padding: 1em;
     text-align: center;
-    border: 2px solid black;
+    border: 2px solid rgba(221, 221, 221, 0.349);
     border-radius: 20px;
     margin-left: 20px;
     margin-right: 20px;
@@ -42,4 +42,13 @@
 .future-projects-container h3 {
     font-size: 20px;
     font-family: monospace;
-} 
+}
+
+.future-projects-image {
+    width: 200px;
+}
+
+.future-project-progress-status-text {
+    font-size: 30px;
+    color:pink;
+}

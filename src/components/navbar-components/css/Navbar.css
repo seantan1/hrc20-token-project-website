@@ -1,14 +1,5 @@
-/* html, body {
-    background-color: #9b63cd;
-} */
-
 .navbar {
-    /* height: 60px; */
-    /* margin:auto; */
     padding: 1em;
-    /* padding-top: 0 !important; */
-    /* display: flex; */
-    /* background-color: rgba(255, 255, 255, 0.281); */
     
     -webkit-transition: background-color 0.5s ease-out;
     -moz-transition: background-color 0.5s ease-out;
@@ -19,44 +10,39 @@
 .navbar-inner {
     margin:auto;
     width: 90%;
-    height: 100%;
+    display:inline-flex;
+    /* height: 100%; */
     
 }
 
 .brand-image {
-    height:50px;
+    height:80px;
 }
 
 .Brand {
-    top:0;
-    background-color: none;
-    font-size: 2em;
-    font-weight: bold;
     cursor: pointer;
-    text-decoration: none !important;
 }
-/* 
-.Brand:hover {
-    
-} */
+
+.brand-container {
+    width: fit-content;
+}
 
 .navbar-links {
-    position:relative;
     cursor: default;
-    display:inline-flex;
-}
-
-.nav-bar-links-hide-in-mobile {
-    padding-top: 1.2em;
-    padding-right: 1.5em;
-    padding-left: 2em;
+    width: 50%;
+    margin: auto;
+    margin-left : 10px;
 }
 
 .navbar-links a {
     padding-left: 1em;
     padding-right: 1em;
     text-decoration: none;
-    font-size: 1.2em;
+    font-size: 1.8em;
+}
+
+.navbar-links a:hover {
+    color:pink !important;
 }
 
 .nav-bar-links-display-in-mobile {
@@ -64,15 +50,11 @@
 }
 
 
-.nav-bar-right {
-    width: 30%;
-    float: right;
-    
-}
 
 .connect-wallet-button-container {
-    float: right;
-    /* padding: 30px; */
+    position:fixed;
+    top:25px;
+    right:25px;
 }
 
 .connect-wallet-button {
@@ -89,6 +71,10 @@
     margin: 4px 2px;
     cursor: pointer;
     border-radius: 50px;
+}
+
+.connect-wallet-button:hover {
+    background-color:pink;
 }
 
 

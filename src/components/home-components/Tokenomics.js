@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import './css/Tokenomics.css';
 import '../../../node_modules/font-awesome/css/font-awesome.css';
 
-
-// components import
+import PuruImage7 from "../../assets/white/7.png";
+import PuruImage5 from "../../assets/white/5.png";
 
 const Tokenomics = () => {
 
@@ -36,7 +36,7 @@ const Tokenomics = () => {
                         </div>
                         <div className="tokenomics-container">
                             <h1>5%</h1>
-                            <h3>Dev cut</h3>
+                            <h3>Dev's cut</h3>
                             <p>
                                 5% of all distributed rewards goes into the development fund to build more awesome stuff on Harmony!
                             </p>
@@ -63,6 +63,10 @@ const Tokenomics = () => {
                                 <p>Earn 1 credit permanently for every rating earned from staking.</p>
                                 <p>Credits can be spent in the Credits Shop, with loads more stuff</p>
                                 <p>added in the future!</p>
+                            </div>
+                            <div className="tokenomics-info-image-container">
+                                <img className="tokenomics-info-image" src={PuruImage7}></img>
+                                <img className="tokenomics-info-image" src={PuruImage5}></img>
                             </div>
                         </div>
                     </div>

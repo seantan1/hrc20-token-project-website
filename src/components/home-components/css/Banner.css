@@ -2,16 +2,49 @@
     background-color: black;
     padding-top: 4em;
     padding-bottom: 4em;
-    color:white;
+    color: white;
 }
 
-.banner-inner-container {
-    width: 60%;
-    padding: 5% 5% 5% 5%;
+.banner-image-container {
+    text-align: center;
+    color: white;
+    width: 50%;
     margin: auto;
 }
 
-.banner-image {
-    height: 10em;
+.banner-background-image {
+    width: 100%;
 }
 
+.banner-text {
+    text-align: center;
+}
+
+.banner-text p {
+    font-size: 50px;
+}
+
+.banner-text-highlight {
+    color:pink;
+    font-weight: 700;
+}
+
+.buy-now-button {
+    margin-right: 20px;
+    background-color: #f1f1f1;
+    font-weight:700;
+    border: none;
+    color: rgb(0, 0, 0);
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 50px;
+}
+
+.buy-now-button:hover {
+    background-color:pink;
+}

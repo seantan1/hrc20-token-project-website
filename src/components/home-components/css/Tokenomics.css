@@ -10,6 +10,7 @@
     font-family: monospace;
     font-size:40px;
     text-align: center;
+    color:pink;
 }
 
 .tokenomics-section-inner-frame {
@@ -35,6 +36,7 @@
 
 .tokenomics-info-container {
     padding-top: 50px;
+    width: 70%;
 }
 
 .tokenomics-info-container h1 {
@@ -45,4 +47,11 @@
 .tokenomics-info-container p {
     font-size:20px;
     font-family: monospace;
+}
+
+
+.tokenomics-info-image {
+    width: 200px;
+    padding-left: 50px;
+    padding-right: 50px;
 }
