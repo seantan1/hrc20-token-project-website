@@ -15,7 +15,7 @@ const TokenStatistics = () => {
                     <div className="future-projects-section-inner-frame-inner">
                         <div className="future-projects-container">
                             <h3>PURUs NFT GACHA & AUCTION</h3>
-                            <p>Gacha system to obtain random puru NFT collectables. Trade with other users or bid for them on auction to complete your collection!</p>
+                            <p>Gacha system where users spend credits to obtain random puru NFT collectables. Trade with other users or bid for them on auction to complete your collection!</p>
                         </div>
                         <div className="future-projects-container">
                             <h3>PURU COLLABORATIONS</h3>
