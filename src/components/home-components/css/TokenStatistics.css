@@ -1,0 +1,42 @@
+.stats {
+    background-color: white;
+    padding-top: 4em;
+    padding-bottom: 4em;
+}
+
+.stats-section h1{
+    
+    font-family: monospace;
+    font-size:40px;
+    text-align: center;
+}
+
+.stats-section-inner-frame {
+    margin:auto;
+    padding:auto;
+    width: 80%;
+    
+}
+
+.stats-section-inner-frame-inner {
+    display:flex;
+    
+}
+
+.stats-container {
+    margin:auto;
+    width:30%;
+    padding: 1em;
+    text-align: center;
+}
+
+.stats-container h1 {
+    font-size: 33px;
+    font-family: monospace;
+}
+
+.stats-container p {
+    font-size: 25px;
+    font-family: monospace;
+    color:grey;
+} 

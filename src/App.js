@@ -1,84 +1,154 @@
 import React, { useState } from 'react';
-import logo from './logo.svg';
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import './App.css';
+import Web3 from 'web3';
+import detectEthereumProvider from '@metamask/detect-provider';
+import Alert from '@material-ui/lab/Alert';
 
 // component imports
+// global
 import Navbar from './components/navbar-components/Navbar';
-import Sidebar from './components/side-bar-components/Sidebar';
-import Popup from './components/global-components/Popup';
-import Aboutme from './components/aboutme-components/Aboutme';
-import Dinoland from './components/dinoland-components/Dinoland';
+import Footer from './components/footer-components/Footer';
+
+// home
+import HomeBanner from './components/home-components/Banner';
+import Tokenomics from './components/home-components/Tokenomics';
+import TokenStatistics from './components/home-components/TokenStatistics';
+import FutureProjects from './components/home-components/FutureProjects';
+import WalletProviderWindow from './components/navbar-components/WalletProviderWindow';
+
+// puruVault
+import Deposits from './components/puruvault-components/Deposits';
+import VaultBanner from './components/puruvault-components/Banner';
 
 function App() {
-    // hook use state for pop up
-    const [popUpDisplayed, setPopUpDisplay] = useState(false);
+    /* user's wallet account useStates
+        account: user's account address 0x... or one....
+        authorised: has user authorised/signed-in a wallet
+        walletType: wallet type - metamask, onewallet
+    */
+    const [account, setAccount] = useState('');
+    const [authorised, setAuthorised] = useState(false);
+    const [walletType, setwalletType] = useState('');
+    const [errorAlert, setErrorAlert] = useState(false);
+    const [errorAlertMessage, setErrorAlertMessage] = useState("");
 
-    const togglePopUp = () => {
-        setPopUpDisplay(!popUpDisplayed);
+    // use to toggle the wallet provider window
+    const [walletWindowOpen, setwalletWindowOpen] = useState(false);
+    // toggle wallet provider window handler
+    const toggleWalletWindow = () => {
+        setwalletWindowOpen(!walletWindowOpen);
+    };
+
+    const signInOneWallet = async () => {
+
+
     }
-    // end of hook use state for pop up
 
-    // hooks for sidebar use state
-    const [sidebarDisplayed, setSidebarDisplay] = useState(false);
-    const [sidebarWidth, setSidebarWidth] = useState(0);
-    const [pageMarginRight, setPageMarginRight] = useState(0);
-    const [headerComponentsDisplayState, setHeaderComponentsDisplayState] = useState("flex");
-
-    const hamburgerClicked = () => {
-        if (!sidebarDisplayed) {
-            setSidebarWidth((prevState) => prevState = 250);
-            setPageMarginRight((prevState) => prevState = 250);
-            setHeaderComponentsDisplayState((prevState) => prevState = "none");
-            setSidebarDisplay(!sidebarDisplayed);
+    // metamask accounts change handler
+    const handleAccountsChanged = accounts => {
+        if (accounts.length === 0) {
+            // console.error('Not found accounts');
         } else {
-            setSidebarWidth((prevState) => prevState = 0);
-            setPageMarginRight((prevState) => prevState = 0);
-            setHeaderComponentsDisplayState((prevState) => prevState = "flex");
-            setSidebarDisplay(!sidebarDisplayed);
+            setAccount(accounts[0]);
+            setwalletType('metamask');
+            // console.log('walletType: ' + walletType + ' addres: ' + account);
         }
-    }
-    // end of hooks for sidebar state
+    };
 
-    
+    // metamask sign in handler
+    const signInMetamask = async () => {
+        const provider = await detectEthereumProvider();
+
+        // @ts-ignore
+        if (provider !== window.ethereum) {
+            // console.error('Do you have multiple wallets installed?');
+        }
+
+        if (!provider) {
+            // console.error('Metamask not found');
+            // error pop up
+            setErrorAlert(true);
+            setErrorAlertMessage('Metamask extension not found.');
+            return;
+        }
+
+        // MetaMask events
+        provider.on('accountsChanged', handleAccountsChanged);
+
+        provider.on('disconnect', () => {
+            // console.log('disconnect');
+            setAuthorised(false);
+            setAccount('');
+            attemptMetamaskConnection(provider);
+
+        });
+
+        provider.on('chainIdChanged', (chainId) => {
+            // console.log('chainIdChanged', chainId);
+            setAuthorised(false);
+            setAccount('');
+        });
+
+        // detect Network account change
+        provider.on('networkChanged', (networkId) => {
+            // console.log('networkChanged', networkId);
+            // if (window.ethereum.networkVersion !== harmonyNetVersion) {
+            //     setAuthorised(false);
+            //     setAccount('');
+            // }
+        });
+
+        // if (window.ethereum.networkVersion !== harmonyNetVersion) {
+        //     const data = harmonyNetData;
+        //     await window.ethereum.request({ method: 'wallet_addEthereumChain', params: data });
+        // }
+
+        attemptMetamaskConnection(provider);
+    };
+
+    // metamask attempt connection function
+    const attemptMetamaskConnection = (provider) => {
+        provider.request({ method: 'eth_requestAccounts' })
+            .then(async params => {
+                handleAccountsChanged(params);
+                setAuthorised(true);
+            })
+            .catch(err => {
+                setAuthorised(false);
+
+                if (err.code === 4001) {
+                    // console.error('Please connect to MetaMask.');
+                } else {
+                    // console.error(err);
+                }
+            });
+    }
 
     return (
         <div className="App">
-            <div className="sidebar-container" style={{ width: sidebarWidth + 'px' }}>
-                <Sidebar />
-            </div>
-            <div className="page-content-container" style={{ marginRight: pageMarginRight + 'px' }}>
+            {walletWindowOpen && <WalletProviderWindow toggleWindow={toggleWalletWindow} signInMetamask={signInMetamask} signInOneWallet={signInOneWallet} />}
+            <div className="page-content-container">
+
                 <div className="sticky-navbar">
-                    <Navbar hamburgerClicked={hamburgerClicked} headerComponentsDisplayState={headerComponentsDisplayState}/>
+                    <Navbar authorised={authorised} account={account} toggleWalletWindow={toggleWalletWindow} />
                 </div>
 
-                <Aboutme />
-                <Dinoland />
-                
-
-                <header className="App-header">
-                    <img src={logo} className="App-logo" alt="logo" />
-                    <p>
-                        Edit <code>src/App.js</code> and save to reload.
-        </p>
-                    <a
-                        className="App-link"
-                        href="https://reactjs.org"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        Learn React
-        </a>
-                    <h1> Simple Popup Example In React Application </h1>
-                    <button onClick={togglePopUp}> Click To Launch Popup</button>
-
-                    {popUpDisplayed ?
-                        <Popup
-                            text='Click "Close Button" to hide popup'
-                            closePopup={togglePopUp}
-                        />
-                        : null
-                    }
-                </header>
+                <BrowserRouter>
+                    <Switch>
+                        <Route exact path='/'>
+                            <HomeBanner />
+                            <TokenStatistics />
+                            <Tokenomics />
+                            <FutureProjects />
+                        </Route>
+                        <Route exact path='/vault'>
+                            <Deposits />
+                        </Route>
+                        <Route render={() => <Redirect to={{ pathname: "/" }} />} />
+                    </Switch>
+                </BrowserRouter>
+                <Footer />
             </div>
 
         </div>
