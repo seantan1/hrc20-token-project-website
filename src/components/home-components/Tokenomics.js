@@ -11,7 +11,6 @@ const Tokenomics = () => {
         <div className="tokenomics">
             <div className="tokenomics-section">
                 <h1>T o k e n o m i c s</h1>
-                <p></p>
                 <div className="tokenomics-section-inner-frame">
                     <div className="tokenomics-section-inner-frame-inner">
                         <div className="tokenomics-container">
