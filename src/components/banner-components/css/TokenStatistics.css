@@ -1,0 +1,31 @@
+.stats {
+    background-color: white;
+    padding-top: 4em;
+    padding-bottom: 4em;
+}
+
+.tokenomics-section h1{
+    
+    font-family: monospace;
+    font-size:40px;
+    text-align: center;
+}
+
+.tokenomics-section-inner-frame {
+    margin:auto;
+    padding:auto;
+    width: 80%;
+    
+}
+
+.tokenomics-section-inner-frame-inner {
+    display:flex;
+    
+}
+
+.tokenomics-container {
+    margin:auto;
+    width:20%;
+    padding: 1em;
+    text-align: center;
+}

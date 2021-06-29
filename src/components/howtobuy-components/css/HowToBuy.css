@@ -1,0 +1,41 @@
+.how-to-buy {
+    padding-top: 40px;
+    margin:auto;
+    text-align: center;
+}
+
+.how-to-buy h1 {
+    font-family: monospace;
+    font-size:40px;
+    text-align: center;
+}
+
+.how-to-buy p {
+    font-family: monospace;
+    font-size: 30px;
+    text-align: center;
+}
+
+.steps-container {
+    padding: 20px;
+}
+
+.viperswap-link {
+    text-decoration: none;
+    color: green;
+}
+
+.steps-image {
+    width: 50%;
+    height: auto;
+}
+
+.steps-container h2 {
+    font-size:30px;
+}
+
+.steps-container p {
+    font-family: monospace;
+    font-size: 20px;
+    text-align: center;
+}

@@ -1,56 +1,147 @@
 import React, { useState } from 'react';
-import logo from './logo.svg';
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import './App.css';
+import Web3 from 'web3';
+import detectEthereumProvider from '@metamask/detect-provider';
+import Alert from '@material-ui/lab/Alert';
 
 // component imports
 import Navbar from './components/navbar-components/Navbar';
-import Popup from './components/global-components/Popup';
-import Aboutme from './components/aboutme-components/Aboutme';
-import Dinoland from './components/dinoland-components/Dinoland';
+import Banner from './components/banner-components/Banner';
+import Tokenomics from './components/banner-components/Tokenomics';
+import TokenStatistics from './components/banner-components/TokenStatistics';
+import HowToBuy from './components/howtobuy-components/HowToBuy';
+import WalletProviderWindow from './components/navbar-components/WalletProviderWindow';
 
 function App() {
-    // hook use state for pop up
-    const [popUpDisplayed, setPopUpDisplay] = useState(false);
+    /* user's wallet account useStates
+        account: user's account address 0x... or one....
+        authorised: has user authorised/signed-in a wallet
+        walletType: wallet type - metamask, onewallet
+    */
+    const [account, setAccount] = useState('');
+    const [authorised, setAuthorised] = useState(false);
+    const [walletType, setwalletType] = useState('');
+    const [errorAlert, setErrorAlert] = useState(false);
+    const [errorAlertMessage, setErrorAlertMessage] = useState("");
 
-    const togglePopUp = () => {
-        setPopUpDisplay(!popUpDisplayed);
+    // use to toggle the wallet provider window
+    const [walletWindowOpen, setwalletWindowOpen] = useState(false);
+    // toggle wallet provider window handler
+    const toggleWalletWindow = () => {
+        setwalletWindowOpen(!walletWindowOpen);
+    };
+
+    const signInOneWallet = async () => {
+
+
+    }
+
+    // metamask accounts change handler
+    const handleAccountsChanged = accounts => {
+        if (accounts.length === 0) {
+            // console.error('Not found accounts');
+        } else {
+            setAccount(accounts[0]);
+            setwalletType('metamask');
+            // console.log('walletType: ' + walletType + ' addres: ' + account);
+        }
+    };
+
+    // metamask sign in handler
+    const signInMetamask = async () => {
+        const provider = await detectEthereumProvider();
+
+        // @ts-ignore
+        if (provider !== window.ethereum) {
+            // console.error('Do you have multiple wallets installed?');
+        }
+
+        if (!provider) {
+            // console.error('Metamask not found');
+            // error pop up
+            setErrorAlert(true);
+            setErrorAlertMessage('Metamask extension not found.');
+            return;
+        }
+
+        // MetaMask events
+        provider.on('accountsChanged', handleAccountsChanged);
+
+        provider.on('disconnect', () => {
+            // console.log('disconnect');
+            setAuthorised(false);
+            setAccount('');
+            attemptMetamaskConnection(provider);
+
+        });
+
+        provider.on('chainIdChanged', (chainId) => {
+            // console.log('chainIdChanged', chainId);
+            setAuthorised(false);
+            setAccount('');
+        });
+
+        // detect Network account change
+        provider.on('networkChanged', (networkId) => {
+            // console.log('networkChanged', networkId);
+            // if (window.ethereum.networkVersion !== harmonyNetVersion) {
+            //     setAuthorised(false);
+            //     setAccount('');
+            // }
+        });
+
+        // if (window.ethereum.networkVersion !== harmonyNetVersion) {
+        //     const data = harmonyNetData;
+        //     await window.ethereum.request({ method: 'wallet_addEthereumChain', params: data });
+        // }
+
+        attemptMetamaskConnection(provider);
+    };
+
+    // metamask attempt connection function
+    const attemptMetamaskConnection = (provider) => {
+        provider.request({ method: 'eth_requestAccounts' })
+            .then(async params => {
+                handleAccountsChanged(params);
+                setAuthorised(true);
+            })
+            .catch(err => {
+                setAuthorised(false);
+
+                if (err.code === 4001) {
+                    // console.error('Please connect to MetaMask.');
+                } else {
+                    // console.error(err);
+                }
+            });
     }
 
     return (
         <div className="App">
+            {walletWindowOpen && <WalletProviderWindow toggleWindow={toggleWalletWindow} signInMetamask={signInMetamask} signInOneWallet={signInOneWallet} />}
             <div className="page-content-container">
+
                 <div className="sticky-navbar">
-                    <Navbar/>
+                    <Navbar authorised={authorised} account={account} toggleWalletWindow={toggleWalletWindow} />
                 </div>
 
-                <Aboutme />
-                <Dinoland />
-                
+                <BrowserRouter>
+                    <Switch>
+                        <Route exact path='/'>
+                            <Banner />
+                            <TokenStatistics />
+                            <Tokenomics />
+                            <HowToBuy />
+                            
+                        </Route>
+                        <Route exact path='/vault'>
+                        <HowToBuy />
+                        </Route>
+                        <Route render={() => <Redirect to={{ pathname: "/" }} />} />
+                    </Switch>
+                </BrowserRouter>
 
-                <header className="App-header">
-                    <img src={logo} className="App-logo" alt="logo" />
-                    <p>
-                        Edit <code>src/App.js</code> and save to reload.
-        </p>
-                    <a
-                        className="App-link"
-                        href="https://reactjs.org"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        Learn React
-        </a>
-                    <h1> Simple Popup Example In React Application </h1>
-                    <button onClick={togglePopUp}> Click To Launch Popup</button>
-
-                    {popUpDisplayed ?
-                        <Popup
-                            text='Click "Close Button" to hide popup'
-                            closePopup={togglePopUp}
-                        />
-                        : null
-                    }
-                </header>
             </div>
 
         </div>
