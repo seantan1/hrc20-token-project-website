@@ -4,7 +4,9 @@
 
 .navbar {
     height: 4em;
-    padding-top: 0 !important;
+    /* margin:auto; */
+    padding: 1em;
+    /* padding-top: 0 !important; */
     /* display: flex; */
     /* background-color: rgba(255, 255, 255, 0.281); */
     
@@ -14,6 +16,11 @@
     transition: background-color 0.5s ease-out;
 }
 
+.navbar-inner {
+    margin:auto;
+    width: 90%;
+}
+
 .Brand {
     border: none;
     background-color: none;
@@ -21,34 +28,35 @@
     font-weight: bold;
     cursor: pointer;
     text-decoration: none !important;
-    padding-top: 0.2em;
-    padding-left:0.5em;
-    float: left;
+    margin:auto;
+    /* padding-top: 0.2em;
+    padding-left:0.5em; */
+    /* float: left; */
 }
 /* 
 .Brand:hover {
     
 } */
 
-.navbar-right {
+.navbar-links {
     cursor: default;
-    float: right;
     display:inline-flex;
 }
 
-.nav-bar-right-hide-in-mobile {
+.nav-bar-links-hide-in-mobile {
     padding-top: 1.2em;
     padding-right: 1.5em;
+    padding-left: 2em;
 }
 
-.navbar-right a {
+.navbar-links a {
     padding-left: 1em;
     padding-right: 1em;
     text-decoration: none;
     font-size: 1.2em;
 }
 
-.nav-bar-right-display-in-mobile {
+.nav-bar-links-display-in-mobile {
     display: none;
 }
 

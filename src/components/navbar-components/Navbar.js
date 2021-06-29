@@ -2,18 +2,16 @@ import React, { useState } from 'react';
 import './css/Navbar.css';
 import '../../../node_modules/font-awesome/css/font-awesome.css';
 
-// import components
-import HamburgerMobileIcon from './HamburgerMobileIcon';
 
-const Navbar = ({ hamburgerClicked, navbarComponentsDisplayState}) => {
+const Navbar = () => {
 
     // hook for nav bar css change on scroll
     const [backgroundColor, setbackgroundColor] = useState("none");
     const [fontColor, setfontColor] = useState("white");
 
     // scroll event listener
-    window.onscroll = function() {
-        if(window.pageYOffset === 0) {
+    window.onscroll = function () {
+        if (window.pageYOffset === 0) {
             setbackgroundColor((prevState) => prevState = "rgba(255, 255, 255, 0)")
             setfontColor((prevState) => prevState = "white")
         }
@@ -26,21 +24,18 @@ const Navbar = ({ hamburgerClicked, navbarComponentsDisplayState}) => {
 
     return (
         <div>
-            <div className="navbar"
-            style={{backgroundColor: backgroundColor}}
-            >
-                <a href="/" className="Brand" style={{color: fontColor}}>Sean Tan</a>
+            <div className="navbar" style={{ backgroundColor: backgroundColor }}>
+                <div className="navbar-inner">
+                    <a href="/" className="Brand" style={{ color: fontColor }}>Sean Tan</a>
 
-                <div className="nav navbar-right">
+                    <div className="nav navbar-links">
 
-                    <div className="nav-bar-right-hide-in-mobile" style={{ display: navbarComponentsDisplayState }}>
-                        <a style={{color: fontColor}} href="#">About me</a>
-                        <a style={{color: fontColor}} href="#">myRMIT</a>
+                        <div className="nav-bar-links-hide-in-mobile">
+                            <a style={{ color: fontColor }} href="#">Vault</a>
+                            <a style={{ color: fontColor }} href="#">myRMIT</a>
+                        </div>
+
                     </div>
-
-                    <div className="nav-bar-right-display-in-mobile"
-                        onClick={hamburgerClicked}
-                    ><HamburgerMobileIcon /></div>
                 </div>
             </div>
         </div>
