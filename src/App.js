@@ -6,14 +6,20 @@ import detectEthereumProvider from '@metamask/detect-provider';
 import Alert from '@material-ui/lab/Alert';
 
 // component imports
+// global
 import Navbar from './components/navbar-components/Navbar';
 import Footer from './components/footer-components/Footer';
-import Banner from './components/home-components/Banner';
+
+// home
+import HomeBanner from './components/home-components/Banner';
 import Tokenomics from './components/home-components/Tokenomics';
 import TokenStatistics from './components/home-components/TokenStatistics';
 import FutureProjects from './components/home-components/FutureProjects';
 import WalletProviderWindow from './components/navbar-components/WalletProviderWindow';
 
+// puruVault
+import Deposits from './components/puruvault-components/Deposits';
+import VaultBanner from './components/puruvault-components/Banner';
 
 function App() {
     /* user's wallet account useStates
@@ -131,14 +137,13 @@ function App() {
                 <BrowserRouter>
                     <Switch>
                         <Route exact path='/'>
-                            <Banner />
+                            <HomeBanner />
                             <TokenStatistics />
                             <Tokenomics />
                             <FutureProjects />
-                            
                         </Route>
                         <Route exact path='/vault'>
-                        <FutureProjects />
+                            <Deposits />
                         </Route>
                         <Route render={() => <Redirect to={{ pathname: "/" }} />} />
                     </Switch>

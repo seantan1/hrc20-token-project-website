@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import './css/Navbar.css';
 import '../../../node_modules/font-awesome/css/font-awesome.css';
-import PuruImage from '../../assets/PURU.png';
+import PuruBrandWhite from '../../assets/white/6.png';
+import PuruBrandBlack from '../../assets/black/6.png';
 
 const Navbar = ({ authorised, account, toggleWalletWindow }) => {
 
@@ -26,7 +27,7 @@ const Navbar = ({ authorised, account, toggleWalletWindow }) => {
         <div>
             <div className="navbar" style={{ backgroundColor: backgroundColor }}>
                 <div className="navbar-inner">
-                    <img className="brand-image" src={PuruImage}></img>
+                    <img className="brand-image" src={PuruBrandWhite}></img>
                     <a href="/" className="Brand" style={{ color: fontColor }}>PURU</a>
 
                     <div className="nav navbar-links">

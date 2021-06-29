@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './css/Tokenomics.css';
 import '../../../node_modules/font-awesome/css/font-awesome.css';
-import PuruImage from '../../assets/PURU.png';
+
 
 // components import
 
