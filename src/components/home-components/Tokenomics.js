@@ -56,13 +56,14 @@ const Tokenomics = () => {
                                 <p>Your share of rewards is based on your rating where:</p>
                                 <p>Rating = (Token amount) x (Number of days locked)</p>
                                 <p>Your share of rewards = (Your rating)/(Total rating) x 100%</p>
-                                <p>Ratings will be reduced by the amount gained originally when the deposit is removed,</p>
+                                <p>Ratings will be reduced by the amount gained originally when</p>
+                                <p>the deposit is removed.</p>
                             </div>
                             <div className="tokenomics-info-container">
                                 <h1>Earn credits!</h1>
-                                <p>Earn 1 credit permanently for every rating earned from staking,</p>
-                                <p>Rating = (Token amount) x (Number of days locked)</p>
-                                <p>Your share of rewards = (Your rating)/(Total rating) x 100%</p>
+                                <p>Earn 1 credit permanently for every rating earned from staking.</p>
+                                <p>Credits can be spent in the Credits Shop, with loads more stuff</p>
+                                <p>added in the future!</p>
                             </div>
                         </div>
                     </div>

@@ -7,11 +7,13 @@ import Alert from '@material-ui/lab/Alert';
 
 // component imports
 import Navbar from './components/navbar-components/Navbar';
-import Banner from './components/banner-components/Banner';
-import Tokenomics from './components/banner-components/Tokenomics';
-import TokenStatistics from './components/banner-components/TokenStatistics';
-import HowToBuy from './components/howtobuy-components/HowToBuy';
+import Footer from './components/footer-components/Footer';
+import Banner from './components/home-components/Banner';
+import Tokenomics from './components/home-components/Tokenomics';
+import TokenStatistics from './components/home-components/TokenStatistics';
+import FutureProjects from './components/home-components/FutureProjects';
 import WalletProviderWindow from './components/navbar-components/WalletProviderWindow';
+
 
 function App() {
     /* user's wallet account useStates
@@ -132,16 +134,16 @@ function App() {
                             <Banner />
                             <TokenStatistics />
                             <Tokenomics />
-                            <HowToBuy />
+                            <FutureProjects />
                             
                         </Route>
                         <Route exact path='/vault'>
-                        <HowToBuy />
+                        <FutureProjects />
                         </Route>
                         <Route render={() => <Redirect to={{ pathname: "/" }} />} />
                     </Switch>
                 </BrowserRouter>
-
+                <Footer />
             </div>
 
         </div>
