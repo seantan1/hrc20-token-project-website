@@ -62,8 +62,6 @@ const Deposits = (props) => {
     // error alerts
     const [depositAmountError, setDepositAmountError] = useState(false);
     const [depositDurationError, setDepositDurationError] = useState(false);
-    // load once
-    const [loadOnce, setLoadOnce] = useState(false);
 
     // user's allowance
     const [userAllowance, setUserAllowance] = useState(0);
@@ -85,7 +83,6 @@ const Deposits = (props) => {
                 from: props.account
             }).then(function (result) {
                 setUserAllowance(web3.utils.fromWei(result));
-                // console.log(web3.utils.fromWei(result));
             });
 
             contract.methods.balanceOf(props.account).call({
@@ -94,42 +91,15 @@ const Deposits = (props) => {
                 setUserTokenBalance(web3.utils.fromWei(result));
             });
 
-            // contractVault.methods.getDepositsByOwner().call({
-            //     from: props.account
-            // }).then(function (depositIdArray) {
-            //     setUserDepositIds(depositIdArray);
-            //     setUserDepositDataLoading(false);
-            // });
-
             contractVault.methods.getDepositsByOwner().call({
                 from: props.account
             }).then(function (depositIdArray) {
                 setUserDepositIds(depositIdArray);
                 setUserDepositDataLoading(false);
             });
+            props.setRefreshData(false);
         }
-    }, [props.authorised, props.account, userDepositDataLoading]);
-
-    // const getUserDepositData = () => {
-    //     if (props.authorised) {
-    //         let web3 = new Web3(window.ethereum);
-    //         let contractVault = new web3.eth.Contract(VAULT_CONTRACT_ABI, VAULT_CONTRACT_ADDRESS);
-    //         let depositDataArray = []
-
-    //         contractVault.methods.getDepositsByOwner().call({
-    //             from: props.account
-    //         }).then(function (depositIdArray) {
-    //             for (var i = 0; i < depositIdArray.length; i++) {
-    //                 contractVault.methods.getDepositById(depositIdArray[i]).call({
-    //                     from: props.account
-    //                 }).then(function (result) {
-    //                     depositDataArray.push(result);
-    //                 });
-    //             }
-    //         });
-    //         return depositDataArray;
-    //     }
-    // }
+    }, [props.authorised, props.account, userDepositDataLoading, props.refreshData]);
 
     const createDeposit = () => {
         // remove warnings on load
@@ -163,15 +133,14 @@ const Deposits = (props) => {
         }).then(function (result) {
             console.log(result); // DEBUG LOG
 
-            setUserDepositDataLoading(true);
-            setLoadOnce(true);
+            props.setRefreshData(true);
         });
     }
 
     const increaseAllowance = () => {
         // wallet authorised check, display wallet connection window if not authorised
         if (!props.authorised) {
-            props.toggleWindow()
+            props.toggleWindow();
             return;
         }
 
@@ -196,7 +165,7 @@ const Deposits = (props) => {
             :
             <div className="deposit-box-container">
                 {userDepositIds.map(mapping => (
-                    <DepositBox key={mapping} authorised={props.authorised} depositId={mapping} account={props.account} />
+                    <DepositBox key={mapping} authorised={props.authorised} depositId={mapping} account={props.account} refreshData={props.refreshData} setRefreshData={props.setRefreshData} />
                 ))}
             </div>
         }

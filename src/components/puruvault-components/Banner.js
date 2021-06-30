@@ -37,7 +37,7 @@ const Banner = (props) => {
                 setUserShareInRewards(rewardShare);
             });
         }
-    }, [props.authorised, props.account]);
+    }, [props.authorised, props.account, props.refreshData]);
 
     return (
         <div className="vault-banner">

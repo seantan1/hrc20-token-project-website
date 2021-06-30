@@ -43,7 +43,7 @@ const DepositBox = (props) => {
                 console.log(timeLeftInEpoch);
             });
         }
-    }, [props.authorised]);
+    }, [props.authorised,props.depositId,timeLeftInEpoch, props.refreshData]);
 
     const claimDeposit = () => {
         if (props.authorised) {
@@ -53,7 +53,7 @@ const DepositBox = (props) => {
                 from: props.account
             }).then(function (result) {
                 console.log(result); // DEBUG LOG
-                
+                props.setRefreshData(true);
             });
         }
     }

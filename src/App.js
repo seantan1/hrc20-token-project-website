@@ -36,6 +36,8 @@ function App() {
     const [errorAlert, setErrorAlert] = useState(false);
     const [errorAlertMessage, setErrorAlertMessage] = useState("");
 
+    const [refreshData, setRefreshData] = useState(false);
+
     // use to toggle the wallet provider window
     const [walletWindowOpen, setwalletWindowOpen] = useState(false);
     // toggle wallet provider window handler
@@ -150,8 +152,8 @@ function App() {
                             <FutureProjects />
                         </Route>
                         <Route exact path='/vault'>
-                            <VaultBanner account={account} authorised={authorised} />
-                            <Deposits account={account} authorised={authorised} toggleWindow={toggleWalletWindow}/>
+                            <VaultBanner account={account} authorised={authorised} refreshData={refreshData} />
+                            <Deposits account={account} authorised={authorised} toggleWindow={toggleWalletWindow} refreshData={refreshData} setRefreshData={setRefreshData}/>
                         </Route>
                         <Route exact path='/credits-store'>
                             <CreditsStoreBanner />
