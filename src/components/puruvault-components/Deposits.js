@@ -189,15 +189,20 @@ const Deposits = (props) => {
 
     return (
         <div className="deposits">
+        <div className="deposits-container">
+        {
+            userDepositIds.length === 0 ? 
+            <p id="no-deposits-text">No deposits found.</p>
+            :
             <div className="deposit-box-container">
-                
                 {userDepositIds.map(mapping => (
                     <DepositBox key={mapping} authorised={props.authorised} depositId={mapping} account={props.account} />
                 ))}
-                {
-                    // userDepositDataLoading ? <p>Loading..</p> : <DepositBox userDepositIds={userDepositIds} />
-                }
             </div>
+        }
+        </div>
+        
+            
             <div id="new-deposit" className="new-deposit-container">
                 <h1>New Deposit</h1>
                 {depositAmountError && <p className="deposit-form-text-warning">Please enter a valid amount.</p>}

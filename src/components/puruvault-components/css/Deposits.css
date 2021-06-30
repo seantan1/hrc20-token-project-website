@@ -3,6 +3,11 @@
     padding-top: 10px;
 }
 
+.deposits-container {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
 .deposit-stats-container {
     margin: auto;
     width: 50%;
@@ -130,4 +135,11 @@
 .deposit-form-text-warning {
     color:red;
     padding-bottom: 10px;
+}
+
+#no-deposits-text {
+    color:rgba(0, 0, 0, 0.5);
+    text-align: center;
+    font-family: monospace;
+    font-size: 30px;
 }
