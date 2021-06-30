@@ -21,6 +21,9 @@ import WalletProviderWindow from './components/navbar-components/WalletProviderW
 import Deposits from './components/puruvault-components/Deposits';
 import VaultBanner from './components/puruvault-components/Banner';
 
+// credits store
+import CreditsStoreBanner from './components/credits-store-components/Banner';
+
 function App() {
     /* user's wallet account useStates
         account: user's account address 0x... or one....
@@ -145,6 +148,9 @@ function App() {
                         <Route exact path='/vault'>
                             <VaultBanner />
                             <Deposits />
+                        </Route>
+                        <Route exact path='/credits-store'>
+                            <CreditsStoreBanner />
                         </Route>
                         <Route render={() => <Redirect to={{ pathname: "/" }} />} />
                     </Switch>

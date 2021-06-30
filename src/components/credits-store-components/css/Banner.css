@@ -1,0 +1,40 @@
+.credits-store-banner {
+    background-color: black;
+    padding-top: 4em;
+    padding-bottom: 0.5em;
+    color: white;
+}
+
+.credits-store-banner-image-container {
+    text-align: center;
+    color: white;
+    /* width: 20%; */
+}
+
+.credits-store-banner-image-container p {
+    font-size: 25px;
+}
+
+.credits-store-banner-image {
+    width: 200px;
+    margin:auto;
+}
+
+.credits-store-banner-text {
+    text-align: center;
+}
+
+.credits-store-banner-text h1 {
+    font-size: 50px;
+}
+
+.credits-store-banner-text p {
+    font-family: monospace;
+    font-size: 25px;
+}
+
+.credits-store-banner-text-highlight {
+    color:pink;
+    font-weight: 700;
+}
+
