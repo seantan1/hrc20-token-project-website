@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import './App.css';
 import Web3 from 'web3';
@@ -42,6 +42,12 @@ function App() {
     const toggleWalletWindow = () => {
         setwalletWindowOpen(!walletWindowOpen);
     };
+
+    useEffect(() => {
+        if(!authorised) {
+            signInMetamask();
+        }
+    }, [authorised]);
 
     const signInOneWallet = async () => {
 
