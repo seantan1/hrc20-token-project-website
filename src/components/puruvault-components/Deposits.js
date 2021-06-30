@@ -70,7 +70,8 @@ const Deposits = (props) => {
     // user's token balance
     const [userTokenBalance, setUserTokenBalance] = useState(0);
     // user's deposit data
-    const [userDepositIds, setUserDepositIds] = useState();
+    // const [userDepositIds, setUserDepositIds] = useState();
+    const [userDepositIds, setUserDepositIds] = useState([]);
     const [userDepositData, setUserDepositData] = useState();
     const [userDepositDataLoading, setUserDepositDataLoading] = useState(true);
 
@@ -92,6 +93,13 @@ const Deposits = (props) => {
             }).then(function (result) {
                 setUserTokenBalance(web3.utils.fromWei(result));
             });
+
+            // contractVault.methods.getDepositsByOwner().call({
+            //     from: props.account
+            // }).then(function (depositIdArray) {
+            //     setUserDepositIds(depositIdArray);
+            //     setUserDepositDataLoading(false);
+            // });
 
             contractVault.methods.getDepositsByOwner().call({
                 from: props.account
@@ -182,8 +190,12 @@ const Deposits = (props) => {
     return (
         <div className="deposits">
             <div className="deposit-box-container">
+                
+                {userDepositIds.map(mapping => (
+                    <DepositBox key={mapping} authorised={props.authorised} depositId={mapping} account={props.account} />
+                ))}
                 {
-                    userDepositDataLoading ? <p>Loading..</p> : <DepositBox userDepositIds={userDepositIds} />
+                    // userDepositDataLoading ? <p>Loading..</p> : <DepositBox userDepositIds={userDepositIds} />
                 }
             </div>
             <div id="new-deposit" className="new-deposit-container">
