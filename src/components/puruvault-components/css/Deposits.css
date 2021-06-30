@@ -105,7 +105,6 @@
 }
 
 .new-deposit-form-field-container {
-    /* width: 30%; */
     margin:auto;
     display:inline-flex;
 }
@@ -113,14 +112,22 @@
 
 .new-deposit-form-field-container span {
     font-family: monospace;
-    font-size: 20px;
     color:pink;
     margin:0;
     cursor: pointer;
+}
+
+.form-field-max-text {
+    font-size: 20px;
 }
 
 .new-deposit-form-field-container-max-text {
     margin:auto;
     margin-left:10px;
     margin-right:10px;
+}
+
+.deposit-form-text-warning {
+    color:red;
+    padding-bottom: 10px;
 }

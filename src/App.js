@@ -145,7 +145,7 @@ function App() {
                         </Route>
                         <Route exact path='/vault'>
                             <VaultBanner />
-                            <Deposits account={account} authorised={authorised} />
+                            <Deposits account={account} authorised={authorised} toggleWindow={toggleWalletWindow}/>
                         </Route>
                         <Route exact path='/credits-store'>
                             <CreditsStoreBanner />
