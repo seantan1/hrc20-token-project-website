@@ -3,8 +3,9 @@ import './css/Navbar.css';
 import '../../../node_modules/font-awesome/css/font-awesome.css';
 import PuruBrandWhite from '../../assets/white/4.png';
 import PuruBrandBlack from '../../assets/black/4.png';
+import loadingGIF from '../../assets/loading-icon-transparent-background-12.jpg';
 
-const Navbar = ({ authorised, account, toggleWalletWindow }) => {
+const Navbar = (props) => {
 
     // hook for nav bar css change on scroll
     const [backgroundColor, setbackgroundColor] = useState("none");
@@ -36,9 +37,10 @@ const Navbar = ({ authorised, account, toggleWalletWindow }) => {
                         <a style={{ color: fontColor }} href="/vault">Vault</a>
                         <a style={{ color: fontColor }} href="/credits-store">Credits Store</a>
                     </div>
+                    {props.transactionPending && <div className="tx-pending-container"><img src={loadingGIF} id="loading-gif"></img></div>}
                     <div className="connect-wallet-button-container">
-                        {!authorised && <button className="connect-wallet-button" onClick={toggleWalletWindow}>Connect Wallet</button>}
-                        {authorised && <button className="connect-wallet-button" onClick={toggleWalletWindow}>{account.substring(0, 11)}...</button>}
+                        {!props.authorised && <button className="connect-wallet-button" onClick={props.toggleWalletWindow}>Connect Wallet</button>}
+                        {props.authorised && <button className="connect-wallet-button" onClick={props.toggleWalletWindow}>{props.account.substring(0, 11)}...</button>}
                     </div>
                 </div>
             </div>

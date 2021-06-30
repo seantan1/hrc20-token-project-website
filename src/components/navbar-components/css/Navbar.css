@@ -49,7 +49,11 @@
     display: none;
 }
 
-
+.tx-pending-container {
+    position:fixed;
+    top:41px;
+    right:210px;
+}
 
 .connect-wallet-button-container {
     position:fixed;
@@ -75,6 +79,10 @@
 
 .connect-wallet-button:hover {
     background-color:pink;
+}
+
+#loading-gif {
+    height: 20px;
 }
 
 

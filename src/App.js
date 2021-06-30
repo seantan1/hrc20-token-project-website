@@ -37,6 +37,7 @@ function App() {
     const [errorAlertMessage, setErrorAlertMessage] = useState("");
 
     const [refreshData, setRefreshData] = useState(false);
+    const [transactionPending, setTransactionPending] = useState(false);
 
     // use to toggle the wallet provider window
     const [walletWindowOpen, setwalletWindowOpen] = useState(false);
@@ -141,7 +142,7 @@ function App() {
             {walletWindowOpen && <WalletProviderWindow toggleWindow={toggleWalletWindow} signInMetamask={signInMetamask} signInOneWallet={signInOneWallet} />}
             <div className="page-content-container">
                 <div className="sticky-navbar">
-                    <Navbar authorised={authorised} account={account} toggleWalletWindow={toggleWalletWindow} />
+                    <Navbar authorised={authorised} account={account} toggleWalletWindow={toggleWalletWindow} transactionPending={transactionPending}/>
                 </div>
                 <BrowserRouter>
                     <Switch>
