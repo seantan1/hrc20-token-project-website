@@ -33,7 +33,7 @@ const Navbar = ({ authorised, account, toggleWalletWindow }) => {
 
                     <div className="nav navbar-links">
                         <a style={{ color: fontColor }} href="/">Home</a>
-                        <a style={{ color: fontColor }} href="/vault">PuruVault</a>
+                        <a style={{ color: fontColor }} href="/vault">Vault</a>
                         <a style={{ color: fontColor }} href="/credits-store">Credits Store</a>
                     </div>
                     <div className="connect-wallet-button-container">
