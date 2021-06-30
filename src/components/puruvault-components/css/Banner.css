@@ -1,0 +1,31 @@
+.vault-banner {
+    background-color: black;
+    padding-top: 4em;
+    padding-bottom: 0.5em;
+    color: white;
+}
+
+.vault-banner-image-container {
+    text-align: center;
+    color: white;
+    /* width: 20%; */
+}
+
+.vault-banner-image {
+    width: 200px;
+    margin:auto;
+}
+
+.vault-banner-text {
+    text-align: center;
+}
+
+.vault-banner-text p {
+    font-size: 50px;
+}
+
+.vault-banner-text-highlight {
+    color:pink;
+    font-weight: 700;
+}
+

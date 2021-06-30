@@ -143,6 +143,7 @@ function App() {
                             <FutureProjects />
                         </Route>
                         <Route exact path='/vault'>
+                            <VaultBanner />
                             <Deposits />
                         </Route>
                         <Route render={() => <Redirect to={{ pathname: "/" }} />} />
