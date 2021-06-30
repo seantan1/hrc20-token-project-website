@@ -1,0 +1,87 @@
+.deposits {
+    padding: 100px;
+    padding-top: 10px;
+}
+
+.deposit-stats-container {
+    margin: auto;
+    width: 50%;
+    text-align:center;
+    padding-bottom: 50px;
+}
+
+
+.deposit-stats-container-inner-text p {
+    font-family: monospace;
+    font-size: 25px;
+}
+
+.deposit-box {
+    margin:20px;
+    padding: 30px;
+    display:inline-block;
+    text-align: left;
+    border: 2px solid rgb(255, 192, 203);
+    border-radius: 20px;
+}
+
+.deposit-id-text {
+    font-size:10px;
+}
+
+.puru-text {
+    color:pink;
+}
+
+.deposit-box h3 {
+    margin-top:5px;
+    margin-bottom:5px;
+}
+
+.deposit-box p {
+    margin:0;
+    color:rgba(128, 128, 128, 0.747);
+}
+
+.deposit-ready-to-claim-text {
+    color:rgb(0, 255, 0) !important;
+    font-weight: 700;
+}
+
+.new-deposit-button {
+    margin-right: 20px;
+    background-color: pink;
+    font-weight:700;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 50px;
+    margin-top: 20px;
+}
+
+.deposit-claim-button {
+    margin-right: 20px;
+    background-color: pink;
+    font-weight:700;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 50px;
+    margin-top: 20px;
+}
+
+.deposit-claim-button:hover {
+    /* background-color:black; */
+}
