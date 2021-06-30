@@ -2,6 +2,15 @@ import './css/Deposits.css';
 import { useState } from 'react';
 import TextField from '@material-ui/core/TextField';
 import { withStyles } from "@material-ui/core/styles";
+import Web3 from 'web3';
+
+// import constants
+import {
+    TOKEN_CONTRACT_ADDRESS,
+    TOKEN_CONTRACT_ABI,
+    VAULT_CONTRACT_ADDRESS,
+    VAULT_CONTRACT_ABI
+} from '../../contract-data/token-contract-data.js';
 
 // CssTextField
 const CssTextField = withStyles({
@@ -32,7 +41,7 @@ const CssTextField = withStyles({
     }
 })(TextField);
 
-const Deposits = () => {
+const Deposits = (props) => {
 
     const [depositAmount, setDepositAmount] = useState('');
     // event handler for donation donorName form
@@ -44,6 +53,19 @@ const Deposits = () => {
     // event handler for donation donorName form
     const depositDaysHandler = (event) => {
         setDepositDays(event.target.value);
+    }
+
+    const createDeposit = (amount, duration) => {
+        let web3 = new Web3(window.ethereum);
+        let contract = new web3.eth.Contract(TOKEN_CONTRACT_ABI, TOKEN_CONTRACT_ADDRESS);
+
+        let contractVault = new web3.eth.Contract(VAULT_CONTRACT_ABI, VAULT_CONTRACT_ADDRESS);
+
+        contractVault.methods.createDeposit(31, amount).send({
+            from: props.account
+        }).then(function(result) {
+            console.log(result);
+        });
     }
 
 
