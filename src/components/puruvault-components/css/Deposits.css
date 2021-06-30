@@ -85,3 +85,42 @@
 .deposit-claim-button:hover {
     /* background-color:black; */
 }
+
+.new-deposit-container {
+    border: 2px solid rgb(255, 192, 203);
+    border-radius: 20px;
+    padding: 50px 100px 50px 100px;
+    width:fit-content;
+    margin:auto;
+}
+
+.new-deposit-container p {
+    margin:0;
+    margin-top: 5px;
+    font-family: monospace;
+}
+
+.new-deposit-form-field {
+    width: 300px;
+}
+
+.new-deposit-form-field-container {
+    /* width: 30%; */
+    margin:auto;
+    display:inline-flex;
+}
+
+
+.new-deposit-form-field-container span {
+    font-family: monospace;
+    font-size: 20px;
+    color:pink;
+    margin:0;
+    cursor: pointer;
+}
+
+.new-deposit-form-field-container-max-text {
+    margin:auto;
+    margin-left:10px;
+    margin-right:10px;
+}

@@ -18,7 +18,7 @@ const Banner = () => {
             <div className="vault-banner-stats-container">
                 <p>Your rating: <span className="vault-banner-stats-pink">1234</span></p>
                 <p>Share in rewards: <span className="vault-banner-stats-pink">0.1%</span></p>
-                <button className="new-deposit-button">+ Deposit</button>
+                <a href="#new-deposit"><button className="new-deposit-button">+ Deposit</button></a>
             </div>
         </div>
 
