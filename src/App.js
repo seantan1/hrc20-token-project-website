@@ -132,11 +132,9 @@ function App() {
         <div className="App">
             {walletWindowOpen && <WalletProviderWindow toggleWindow={toggleWalletWindow} signInMetamask={signInMetamask} signInOneWallet={signInOneWallet} />}
             <div className="page-content-container">
-
                 <div className="sticky-navbar">
                     <Navbar authorised={authorised} account={account} toggleWalletWindow={toggleWalletWindow} />
                 </div>
-
                 <BrowserRouter>
                     <Switch>
                         <Route exact path='/'>
@@ -147,7 +145,7 @@ function App() {
                         </Route>
                         <Route exact path='/vault'>
                             <VaultBanner />
-                            <Deposits />
+                            <Deposits account={account} authorised={authorised} />
                         </Route>
                         <Route exact path='/credits-store'>
                             <CreditsStoreBanner />
@@ -157,7 +155,6 @@ function App() {
                 </BrowserRouter>
                 <Footer />
             </div>
-
         </div>
     );
 }
