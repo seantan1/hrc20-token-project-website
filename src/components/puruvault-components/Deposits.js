@@ -5,8 +5,10 @@ const Deposits = () => {
 
     return (
         <div className="deposits">
-            
-            deposits
+            <h1>Your Deposits</h1>
+            <div className="deposit-list-container">
+                
+            </div>
         </div>
 
     );
