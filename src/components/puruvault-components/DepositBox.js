@@ -10,50 +10,20 @@ import {
     VAULT_CONTRACT_ABI
 } from '../../contract-data/token-contract-data.js';
 
+import DepositBoxInfo from './DepositBoxInfo';
+
 
 const DepositBox = (props) => {
 
-    const [result1, setResult1] = useState([]);
-    let web3 = new Web3(window.ethereum);
-    let contractVault = new web3.eth.Contract(VAULT_CONTRACT_ABI, VAULT_CONTRACT_ADDRESS);
-
-    // contractVault.methods.getDepositById(0).call().then(function (result) {
-    //     console.log(result);
-    //     setArray(result);
-    //     console.log(array);
-    // });
-
+    const web3 = new Web3(window.ethereum);
+    const contractVault = new web3.eth.Contract(VAULT_CONTRACT_ABI, VAULT_CONTRACT_ADDRESS);
+    console.log("depositbox");
+    console.log(props.userDepositIds);
     return (
-        <div id="helo">
+        <div>
             {
                 props.userDepositIds.map(function (item, i) {
-                    contractVault.methods.getDepositById(item).call().then(function (result) {
-                        setResult1(result);
-                        return [
-                            <div key={i} className="deposit-box">
-                                <p className="deposit-id-text">ID: {item}</p>
-                                <h2>{result[1]} <span className="puru-text">$PURU</span></h2>
-                                <h3>Remaining Time:</h3>
-                                <p>{ }</p>
-                                <p className="deposit-ready-to-claim-text">Ready To Claim!</p>
-                                <h3>Rating & Credits earned:</h3>
-                                <p>1500</p>
-                                <button className="deposit-claim-button">Claim</button>
-                            </div>
-                        ];
-                    });
-                    // return [
-                    //     <div key={i} className="deposit-box">
-                    //         <p className="deposit-id-text">ID: {item}</p>
-                    //         <h2>{result1[1]} <span className="puru-text">$PURU</span></h2>
-                    //         <h3>Remaining Time:</h3>
-                    //         <p>{ }</p>
-                    //         <p className="deposit-ready-to-claim-text">Ready To Claim!</p>
-                    //         <h3>Rating & Credits earned:</h3>
-                    //         <p>1500</p>
-                    //         <button className="deposit-claim-button">Claim</button>
-                    //     </div>
-                    // ];
+                    <DepositBoxInfo contractVault={contractVault} despositId={item} />
                 })
             }
         </div>
