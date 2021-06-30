@@ -1,7 +1,7 @@
 .vault-banner {
     background-color: black;
     padding-top: 4em;
-    padding-bottom: 0.5em;
+    padding-bottom: 1.5em;
     color: white;
 }
 
@@ -28,4 +28,18 @@
     color:pink;
     font-weight: 700;
 }
+
+.vault-banner-stats-container {
+    text-align: center;
+}
+
+.vault-banner-stats-container p {
+    font-family: monospace;
+    font-size: 25px;
+}
+
+.vault-banner-stats-pink {
+    color:pink;
+}
+
 
