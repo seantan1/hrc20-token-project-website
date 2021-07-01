@@ -68,6 +68,7 @@ const DepositBox = (props) => {
             .on('receipt', function(receipt){
                 // console.log(confirmationNumber);
                 console.log(receipt);
+                props.showAlert('Claim Deposit success!', 'View transaction', "www.facebook.com", 'success');
                 props.setTransactionPending(false);
                 props.setRefreshData(true)
             })
