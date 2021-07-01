@@ -17,15 +17,19 @@ import Tokenomics from './components/home-components/Tokenomics';
 import TokenStatistics from './components/home-components/TokenStatistics';
 import FutureProjects from './components/home-components/FutureProjects';
 import WalletProviderWindow from './components/navbar-components/WalletProviderWindow';
-import Bounty from './components/bounty-components/Bounty';
-import Info from './components/info-components/Info';
+
 
 // puruVault
 import Deposits from './components/puruvault-components/Deposits';
 import VaultBanner from './components/puruvault-components/Banner';
+import ForfeitDepositWindow from './components/puruvault-components/ForfeitDepositWindow';
 
 // credits store
 import CreditsStoreBanner from './components/credits-store-components/Banner';
+// bounty
+import Bounty from './components/bounty-components/Bounty';
+// info
+import Info from './components/info-components/Info';
 
 function App() {
     /* user's wallet account useStates
@@ -52,6 +56,15 @@ function App() {
         setwalletWindowOpen(!walletWindowOpen);
     };
 
+    //use to toggle the forfeit deposit window
+    const [forfeitDepositWindowOpen, setForfeitDepositWindowOpen] = useState(false);
+    const [forfeitDepositId, setForfeitDepositId] = useState(false);
+    const toggleForfeitDepositWindowOpen = (id) => {
+        setForfeitDepositWindowOpen(!forfeitDepositWindowOpen);
+        setForfeitDepositId(id);
+    };
+
+    // auto prompt metamask sign in
     useEffect(() => {
         if (!authorised) {
             signInMetamask();
@@ -156,6 +169,7 @@ function App() {
     return (
         <div className="App">
             {walletWindowOpen && <WalletProviderWindow toggleWindow={toggleWalletWindow} signInMetamask={signInMetamask} signInOneWallet={signInOneWallet} />}
+            {forfeitDepositWindowOpen && <ForfeitDepositWindow authorised={authorised} account={account} toggleForfeitDepositWindowOpen={toggleForfeitDepositWindowOpen} forfeitDepositId={forfeitDepositId} setTransactionPending={setTransactionPending} showAlert={showAlert} setRefreshData={setRefreshData}/>}
             <div className="page-content-container">
                 <div className="sticky-navbar">
                     <Navbar authorised={authorised} account={account} toggleWalletWindow={toggleWalletWindow} transactionPending={transactionPending} />
@@ -171,7 +185,7 @@ function App() {
                         </Route>
                         <Route exact path='/vault'>
                             <VaultBanner account={account} authorised={authorised} refreshData={refreshData} />
-                            <Deposits account={account} authorised={authorised} toggleWindow={toggleWalletWindow} refreshData={refreshData} setRefreshData={setRefreshData} setTransactionPending={setTransactionPending} showAlert={showAlert} />
+                            <Deposits account={account} authorised={authorised} toggleWindow={toggleWalletWindow} refreshData={refreshData} setRefreshData={setRefreshData} setTransactionPending={setTransactionPending} showAlert={showAlert} toggleForfeitDepositWindowOpen={toggleForfeitDepositWindowOpen}/>
                         </Route>
                         <Route exact path='/credits-store'>
                             <CreditsStoreBanner authorised={authorised} account={account} />

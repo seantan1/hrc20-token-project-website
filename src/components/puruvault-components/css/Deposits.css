@@ -28,6 +28,7 @@
     text-align: left;
     border: 2px solid rgb(255, 192, 203);
     border-radius: 20px;
+    min-width: 250px;
 }
 
 .deposit-id-text {
@@ -142,4 +143,12 @@
     text-align: center;
     font-family: monospace;
     font-size: 30px;
+}
+
+.deposit-box h2 {
+    font-size: 20px;
+}
+
+.deposit-box h3 {
+    font-size: 15px;
 }

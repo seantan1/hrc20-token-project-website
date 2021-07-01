@@ -174,6 +174,7 @@ const Deposits = (props) => {
             // console.log(confirmationNumber);
             console.log(receipt);
             props.setTransactionPending(false);
+            props.showAlert('Approved allowance', 'View transaction', "www.facebook.com", 'success');
         })
         
         // .then(function (result) {
@@ -190,7 +191,7 @@ const Deposits = (props) => {
             :
             <div className="deposit-box-container">
                 {userDepositIds.map(mapping => (
-                    <DepositBox key={mapping} authorised={props.authorised} depositId={mapping} account={props.account} refreshData={props.refreshData} setRefreshData={props.setRefreshData} setTransactionPending={props.setTransactionPending} />
+                    <DepositBox key={mapping} authorised={props.authorised} depositId={mapping} account={props.account} refreshData={props.refreshData} setRefreshData={props.setRefreshData} setTransactionPending={props.setTransactionPending} toggleForfeitDepositWindowOpen={props.toggleForfeitDepositWindowOpen}/>
                 ))}
             </div>
         }

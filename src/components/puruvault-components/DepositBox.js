@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './css/Deposits.css';
 import Web3 from 'web3';
 
+
 // import constants
 import {
     TOKEN_CONTRACT_ADDRESS,
@@ -87,7 +88,13 @@ const DepositBox = (props) => {
             {timeLeft ? <p>{timeLeft}</p> : <p className="deposit-ready-to-claim-text">Ready To Claim!</p>}
             <h3>Rating & Credits earned:</h3>
             <p>{rating}</p>
-            <button className="deposit-claim-button" onClick={claimDeposit}>Claim</button>
+            {timeLeft ? 
+                <button className="deposit-claim-button" onClick={() => props.toggleForfeitDepositWindowOpen(props.depositId)}>Forfeit</button> 
+                : 
+                <button className="deposit-claim-button" onClick={claimDeposit}>Claim</button>
+            }
+            
+            
         </div>
     );
 }
