@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './css/Info.css';
 import PuruImage2 from "../../assets/white/2.png";
 
@@ -8,7 +8,7 @@ const Info = () => {
         <div>
         <div className="info-banner">
            <div className="info-banner-image-container">
-                <img className="info-banner-image" src={PuruImage2}></img>
+                <img className="info-banner-image" src={PuruImage2} alt="puru"></img>
            </div>
            <div className="info-banner-text">
                 <h1><span className="info-banner-text-highlight">Information</span></h1>
@@ -73,14 +73,19 @@ const Info = () => {
             Goodies offered in the Credit Shop would be such as gacha tickets for PURU NFTs and entitlements on collaborations with other projects. 
             Users can also buy/sell/trade their rare NFTs with other users with $PURU as the main trading currency (slash fee will be exempted not to worry!)</p>
 
-            <h1>Project Goals</h1>
+            <h3>Token Allocation</h3>
+            <p>1 million $PURU will be minted on token deployment and no more can be minted afterwards (minter function disabled). 
+            80% of the tokens is allocated for IDO (Initial DEX Offering), while 20% is kept in the developer's vault for future 
+            events and project development funds.</p>
+
+            <h3>Project Goals</h3>
             <p>This project is designed to be a long term project where the profits of long-term holders are cared for 
             and protected. Future projects such as the NFT gacha expansion and PURUSWAP will give additional incentives 
             to the current $PURU holders, such aims to appreciate the price of $PURU. Collaborations with other projects 
             (currently still TBA as to not give empty promises) will also allow users to spend their credits for some special benefits and entitlements.</p>
 
             <p className="red-text">All important information ends here.</p>
-            <h2>More about the project and the one and only cowoder</h2>
+            <h3>More about the project and the one and only cowoder</h3>
             <p>Hello, I'm pururun who is the developer for everything on this project except for the cute PURU arts, which is commisioned from <a href="https://twitter.com/HibikiDxz">Shino</a>, 
             and the storytelling done by DKLS, and not forgetting the support from all the degens in the Freyala Discord Community. I am also a mini dev for Freyala and have since 
             then passionately learned Solidity and somehow made this project possible! No forks and lame copy practices was done for this project, all 100% 
@@ -88,7 +93,7 @@ const Info = () => {
             is because the community here is just too friendly! I've never been to a community where users and developers mingle so happily together. This 
             project is made so that everyone can have fun collecting PURUs, enjoy the storytelling and have a laugh that they made st0nks by investing in $PURU.</p>
 
-            <h2>Story behind the PURUs</h2>
+            <h3>Story behind the PURUs</h3>
 
         </div>
         </div>

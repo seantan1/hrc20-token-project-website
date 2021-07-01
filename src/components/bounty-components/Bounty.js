@@ -18,7 +18,7 @@ BigNumber.config({ DECIMAL_PLACES: 2 });
 
 const Bounty = (props) => {
 
-    const [totalRewards, setTotalRewards] = useState('');
+    // const [totalRewards, setTotalRewards] = useState('');
     const [totalBounty, setTotalBounty] = useState('');
 
     useEffect(() => {
@@ -30,7 +30,7 @@ const Bounty = (props) => {
 
             contract.methods.getDispensableRewards().call().then(function (result) {
                 let bn = new BigNumber(web3.utils.fromWei(result)).div(1);
-                setTotalRewards(bn.toString());
+                // setTotalRewards(bn.toString());
                 let bn_bounty = bn.div(1000);
                 setTotalBounty(bn_bounty.toString());
                 props.setRefreshData(false);
@@ -43,7 +43,7 @@ const Bounty = (props) => {
                     props.setRefreshData(true);
                 });
         }
-    }, [props.authorised, props.refreshData]);
+    }, [props.authorised, props.refreshData, props]);
 
     const claimBounty = () => {
         // wallet authorised check, display wallet connection window if not authorised
@@ -77,7 +77,7 @@ const Bounty = (props) => {
         <div>
             <div className="bounty">
                 <div className="bounty-image-container">
-                    <img className="bounty-image" src={PuruImage3}></img>
+                    <img className="bounty-image" src={PuruImage3} alt="puru"></img>
                 </div>
                 <div className="bounty-text">
                     <h1><span className="bounty-text-highlight">CURRENT BOUNTY</span></h1>

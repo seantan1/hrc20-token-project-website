@@ -71,7 +71,7 @@ export default function ProfileWindow(props) {
                     </span>
                     <div className="profile-pop-up-window-inner">
                         <div className="profile-pop-up-window-inner-border">
-                            <img id="profile-puru-image" src={PuruImage4}></img>
+                            <img id="profile-puru-image" src={PuruImage4} alt="puru"></img>
                             <h2>{userBalance} <span className="pink-text">$PURU</span></h2>
                             <h3>Your rating:</h3>
                             <p>{userRating}</p>

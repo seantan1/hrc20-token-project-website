@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './css/Banner.css';
 import '../../../node_modules/font-awesome/css/font-awesome.css';
 import BannerBackground from '../../assets/white/home-banner-background.png';
@@ -10,7 +10,7 @@ const Banner = () => {
     return (
         <div className="banner">
            <div className="banner-image-container">
-                <img className="banner-background-image" src={BannerBackground}></img>
+                <img className="banner-background-image" src={BannerBackground} alt="puru arrow moon"></img>
            </div>
            <div className="banner-text">
                 <p>Every day is <span className="banner-text-highlight">$PURU</span> day!</p>

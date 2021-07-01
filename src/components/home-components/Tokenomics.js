@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './css/Tokenomics.css';
 import '../../../node_modules/font-awesome/css/font-awesome.css';
 
@@ -66,8 +66,8 @@ const Tokenomics = () => {
                                 <p>very soon in the near the future!</p>
                             </div>
                             <div className="tokenomics-info-image-container">
-                                <img className="tokenomics-info-image" src={PuruImage7}></img>
-                                <img className="tokenomics-info-image" src={PuruImage5}></img>
+                                <img className="tokenomics-info-image" src={PuruImage7} alt="puru"></img>
+                                <img className="tokenomics-info-image" src={PuruImage5} alt="puru"></img>
                             </div>
                         </div>
                     </div>

@@ -5,8 +5,6 @@ import Web3 from 'web3';
 
 // import constants
 import {
-    TOKEN_CONTRACT_ADDRESS,
-    TOKEN_CONTRACT_ABI,
     VAULT_CONTRACT_ADDRESS,
     VAULT_CONTRACT_ABI
 } from '../../contract-data/token-contract-data.js';
@@ -32,7 +30,7 @@ const DepositBox = (props) => {
         var dDisplay = d > 0 ? d + (d === 1 ? " day " : " days ") : "";
         var hDisplay = h > 0 ? h + (h === 1 ? " hr " : " hrs ") : "";
         var mDisplay = m > 0 ? m + (m === 1 ? " min " : " mins ") : "";
-        var sDisplay = s > 0 ? s + (s == 1 ? " s" : " s") : "";
+        var sDisplay = s > 0 ? s + (s === 1 ? " s" : " s") : "";
         return dDisplay + hDisplay + mDisplay + sDisplay;
         // return dDisplay + hDisplay + mDisplay;
         }

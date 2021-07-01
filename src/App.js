@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import './App.css';
-import Web3 from 'web3';
 import detectEthereumProvider from '@metamask/detect-provider';
 import Alert from '@material-ui/lab/Alert';
 import AlertTitle from '@material-ui/lab/AlertTitle';
@@ -39,7 +38,6 @@ function App() {
     */
     const [account, setAccount] = useState('');
     const [authorised, setAuthorised] = useState(false);
-    const [walletType, setwalletType] = useState('');
     const [alert, setAlert] = useState(false);
     const [alertTitle, setAlertTitle] = useState("");
     const [alertMessage, setAlertMessage] = useState("");
@@ -70,13 +68,6 @@ function App() {
         setForfeitDepositId(id);
     };
 
-    // auto prompt metamask sign in
-    useEffect(() => {
-        if (!authorised) {
-            signInMetamask();
-        }
-    }, [authorised]);
-
     const showAlert = (title, message, link, severity) => {
         setAlertTitle(title);
         setAlertMessage(message);
@@ -99,7 +90,6 @@ function App() {
             // console.error('Not found accounts');
         } else {
             setAccount(accounts[0]);
-            setwalletType('metamask');
             // console.log('walletType: ' + walletType + ' addres: ' + account);
         }
     };
@@ -172,6 +162,13 @@ function App() {
             });
     }
 
+    // auto prompt metamask sign in
+    useEffect(() => {
+        if (!authorised) {
+            signInMetamask();
+        }
+    });
+
     return (
         <div className="App">
             {profileWindowOpen && <ProfileWindow authorised={authorised} account={account} toggleWindow={toggleProfileWindow}/>}
@@ -180,7 +177,7 @@ function App() {
             <div className="page-content-container">
                 <div className="sticky-navbar">
                     <Navbar authorised={authorised} account={account} toggleWalletWindow={toggleWalletWindow} toggleProfileWindow={toggleProfileWindow} transactionPending={transactionPending} />
-                    {alert && <Alert className="tx-alert" severity={alertSeverity} onClose={() => setAlert(false)}><AlertTitle>{alertTitle}</AlertTitle><a href={alertLink} target="_blank">{alertMessage}</a></Alert>}
+                    {alert && <Alert className="tx-alert" severity={alertSeverity} onClose={() => setAlert(false)}><AlertTitle>{alertTitle}</AlertTitle><a href={alertLink} target="_blank" rel="noreferrer">{alertMessage}</a></Alert>}
                 </div>
                 <BrowserRouter>
                     <Switch>
