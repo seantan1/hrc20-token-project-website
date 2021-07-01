@@ -34,11 +34,11 @@ const Navbar = (props) => {
                     <div className="brand-container" onMouseEnter={() => setHoverBrandImage(true)} onMouseLeave={() => setHoverBrandImage(false)}>
                         {hoverBrandImage ?
                             <div>
-                                <a href="/"><img className="brand-image" src={PuruBrandPink}></img></a>
+                                <a href="/"><img className="brand-image" src={PuruBrandPink} alt="puru"></img></a>
                             </div>
                             :
                             <div>
-                                {fontColor == "white" ? <a href="/"><img className="brand-image" src={PuruBrandWhite}></img></a> : <a href="/"><img className="brand-image" src={PuruBrandBlack}></img></a>}
+                                {fontColor === "white" ? <a href="/"><img className="brand-image" src={PuruBrandWhite} alt="puru"></img></a> : <a href="/"><img className="brand-image" src={PuruBrandBlack} alt="puru"></img></a>}
                             </div>
                         }
 
@@ -54,17 +54,17 @@ const Navbar = (props) => {
                     <div className="profile-container" onClick={props.toggleProfileWindow} onMouseEnter={() => setHoverProfileImage(true)} onMouseLeave={() => setHoverProfileImage(false)}>
                         {hoverProfileImage ?
                             <div>
-                                <img className="profile-image" src={PuruBrandPink}></img>
+                                <img className="profile-image" src={PuruBrandPink} alt="puru"></img>
                             </div>
                             :
                             <div>
-                                {fontColor == "white" ? <img className="profile-image" src={PuruBrandWhite}></img> : <img className="profile-image" src={PuruBrandBlack}></img>}
+                                {fontColor === "white" ? <img className="profile-image" src={PuruBrandWhite} alt="puru"></img> : <img className="profile-image" src={PuruBrandBlack} alt="puru"></img>}
                             </div>
                         }
                     </div>
                     {props.transactionPending &&
                         <div className="tx-pending-container">
-                            <img src={loadingGIF} id="loading-gif"></img>
+                            <img src={loadingGIF} id="loading-gif" alt="loading"></img>
                             <p style={{ color: fontColor }}>Transaction pending</p>
                         </div>
                     }

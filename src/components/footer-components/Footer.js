@@ -5,7 +5,7 @@ const Footer = () => {
     return (
         <div className="footer">
             <div className="footer-links-container">
-                <a href="#">Discord</a> | <a href="#">Twitter</a> | <a href="#">GitHub</a>
+                <a href="/">Discord</a> | <a href="/">Twitter</a> | <a href="/">GitHub</a>
             </div>
             
         </div>

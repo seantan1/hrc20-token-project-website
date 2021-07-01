@@ -5,8 +5,6 @@ import Web3 from 'web3';
 
 // import constants
 import {
-    TOKEN_CONTRACT_ADDRESS,
-    TOKEN_CONTRACT_ABI,
     VAULT_CONTRACT_ADDRESS,
     VAULT_CONTRACT_ABI
 } from '../../contract-data/token-contract-data.js';
@@ -23,7 +21,7 @@ const TokenStatistics = (props) => {
     useEffect(() => {
         if (props.authorised) {
             let web3 = new Web3(window.ethereum);
-            let contract = new web3.eth.Contract(TOKEN_CONTRACT_ABI, TOKEN_CONTRACT_ADDRESS);
+            // let contract = new web3.eth.Contract(TOKEN_CONTRACT_ABI, TOKEN_CONTRACT_ADDRESS);
             let contractVault = new web3.eth.Contract(VAULT_CONTRACT_ABI, VAULT_CONTRACT_ADDRESS);
 
             contractVault.methods.getLockedSupply().call().then(function (result) {

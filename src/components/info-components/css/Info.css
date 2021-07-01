@@ -43,7 +43,17 @@
     padding: 100px;
 }
 
+.info-content-container h3 {
+    margin-top: 20px;
+    margin-bottom: 5px;
+}
+
+.info-content-container p {
+    margin:0;
+}
+
 .red-text {
     color:red;
+    padding-top: 20px;
 }
 

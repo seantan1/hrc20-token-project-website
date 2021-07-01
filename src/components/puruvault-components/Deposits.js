@@ -70,7 +70,6 @@ const Deposits = (props) => {
     // user's deposit data
     // const [userDepositIds, setUserDepositIds] = useState();
     const [userDepositIds, setUserDepositIds] = useState([]);
-    const [userDepositData, setUserDepositData] = useState();
     const [userDepositDataLoading, setUserDepositDataLoading] = useState(true);
 
     useEffect(() => {

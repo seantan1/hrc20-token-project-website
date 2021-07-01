@@ -6,8 +6,6 @@ import Web3 from 'web3';
 
 // import constants
 import {
-    TOKEN_CONTRACT_ADDRESS,
-    TOKEN_CONTRACT_ABI,
     VAULT_CONTRACT_ADDRESS,
     VAULT_CONTRACT_ABI
 } from '../../contract-data/token-contract-data.js';
@@ -24,7 +22,7 @@ const Banner = (props) => {
     useEffect(() => {
         if (props.authorised) {
             let web3 = new Web3(window.ethereum);
-            let contract = new web3.eth.Contract(TOKEN_CONTRACT_ABI, TOKEN_CONTRACT_ADDRESS);
+            // let contract = new web3.eth.Contract(TOKEN_CONTRACT_ABI, TOKEN_CONTRACT_ADDRESS);
             let contractVault = new web3.eth.Contract(VAULT_CONTRACT_ABI, VAULT_CONTRACT_ADDRESS);
 
             contractVault.methods.getRatingValueByAddress(props.account).call().then(function (result) {
@@ -46,7 +44,7 @@ const Banner = (props) => {
     return (
         <div className="vault-banner">
             <div className="vault-banner-image-container">
-                <img className="vault-banner-image" src={PuruImage5}></img>
+                <img className="vault-banner-image" src={PuruImage5} alt="puru"></img>
             </div>
             <div className="vault-banner-text">
                 <p><span className="vault-banner-text-highlight">$PURU</span> Vault</p>
