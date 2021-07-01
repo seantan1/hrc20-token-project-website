@@ -12,6 +12,7 @@
     background-color: white;
     width: 40%;
     margin-top: 10%;
+    padding-top: 15px;
     padding-left: 20px;
     padding-right: 20px;
     border-radius: 5px;
@@ -20,6 +21,7 @@
 
 .pop-up-window-inner {
     padding: 40px;
+    
 }
 
 .close {
@@ -28,7 +30,7 @@
 }
 
 .close:hover {
-    color: #32beff;
+    color: pink;
     cursor: pointer;
 }
 
@@ -44,7 +46,7 @@
 }
 
 .wallet-option-container:hover {
-    border: 2px solid #32beff;
+    border: 2px solid rgb(255, 192, 203);
     cursor: pointer;
 }
 

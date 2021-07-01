@@ -51,8 +51,13 @@
 
 .tx-pending-container {
     position:fixed;
-    top:41px;
-    right:210px;
+    display:inline-flex;
+    top:68px;
+    right:38px;
+}
+.tx-pending-container img {
+    margin: auto;
+    padding-right: 5px;
 }
 
 .connect-wallet-button-container {

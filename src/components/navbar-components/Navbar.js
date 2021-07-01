@@ -39,7 +39,12 @@ const Navbar = (props) => {
                         <a style={{ color: fontColor }} href="/bounty">Claim Bounty</a>
                         <a style={{ color: fontColor }} href="/info">Info</a>
                     </div>
-                    {props.transactionPending && <div className="tx-pending-container"><img src={loadingGIF} id="loading-gif"></img></div>}
+                    {props.transactionPending && 
+                        <div className="tx-pending-container">
+                        <img src={loadingGIF} id="loading-gif"></img>
+                        <p style={{ color: fontColor }}>Transaction pending</p>
+                        </div>
+                    }
                     <div className="connect-wallet-button-container">
                         {!props.authorised && <button className="connect-wallet-button" onClick={props.toggleWalletWindow}>Connect Wallet</button>}
                         {props.authorised && <button className="connect-wallet-button" onClick={props.toggleWalletWindow}>{props.account.substring(0, 11)}...</button>}
