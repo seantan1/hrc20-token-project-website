@@ -1,0 +1,49 @@
+.info-banner {
+    background-color: black;
+    padding-top: 6em;
+    padding-bottom: 0.5em;
+    color: white;
+}
+
+.info-banner-image-container {
+    text-align: center;
+    color: white;
+    /* width: 20%; */
+}
+
+.info-image-container p {
+    font-size: 25px;
+}
+
+.info-banner-image {
+    width: 200px;
+    margin:auto;
+}
+
+.info-banner-text {
+    text-align: center;
+}
+
+.info-banner-text h1 {
+    font-size: 50px;
+    margin-top:0;
+}
+
+.info-banner-text p {
+    font-family: monospace;
+    font-size: 25px;
+}
+
+.info-banner-text-highlight {
+    color:pink;
+    font-weight: 700;
+}
+
+.info-content-container {
+    padding: 100px;
+}
+
+.red-text {
+    color:red;
+}
+

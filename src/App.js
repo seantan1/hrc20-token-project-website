@@ -18,6 +18,7 @@ import TokenStatistics from './components/home-components/TokenStatistics';
 import FutureProjects from './components/home-components/FutureProjects';
 import WalletProviderWindow from './components/navbar-components/WalletProviderWindow';
 import Bounty from './components/bounty-components/Bounty';
+import Info from './components/info-components/Info';
 
 // puruVault
 import Deposits from './components/puruvault-components/Deposits';
@@ -177,6 +178,9 @@ function App() {
                         </Route>
                         <Route exact path='/bounty'>
                             <Bounty authorised={authorised} account={account} toggleWindow={toggleWalletWindow} setTransactionPending={setTransactionPending} refreshData={refreshData} setRefreshData={setRefreshData} />
+                        </Route>
+                        <Route exact path='/info'>
+                            <Info />
                         </Route>
                         <Route render={() => <Redirect to={{ pathname: "/" }} />} />
                     </Switch>
