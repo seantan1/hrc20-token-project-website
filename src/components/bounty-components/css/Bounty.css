@@ -1,0 +1,64 @@
+.bounty {
+    background-color: black;
+    padding-top: 6em;
+    padding-bottom: 3em;
+    color: white;
+}
+
+.bounty-image-container {
+    text-align: center;
+    color: white;
+    /* width: 20%; */
+}
+
+.bounty-image-container p {
+    font-size: 25px;
+}
+
+.bounty-image {
+    width: 200px;
+    margin:auto;
+}
+
+.bounty-text {
+    text-align: center;
+}
+
+.bounty-text h1 {
+    font-size: 50px;
+}
+
+.bounty-text p {
+    font-family: monospace;
+    font-size: 35px;
+}
+
+.bounty-text-highlight {
+    color:pink;
+    font-weight: 700;
+}
+
+.bounty-claim-button {
+    margin-right: 20px;
+    background-color: #f1f1f1;
+    font-weight:700;
+    border: none;
+    color: rgb(0, 0, 0);
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 50px;
+}
+
+.bounty-claim-button:hover {
+    background-color:pink;
+}
+
+.bounty-info-container {
+    padding: 50px;
+    width: 50%;
+}

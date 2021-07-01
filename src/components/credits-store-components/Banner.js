@@ -43,7 +43,7 @@ const Banner = (props) => {
            </div>
            <div className="credits-store-banner-text">
                 <h1><span className="credits-store-banner-text-highlight">COMING SOON!</span></h1>
-                <p>Estimate Completion: 1st August 2021</p>
+                <p>Estimate Completion: 15th August 2021</p>
                 
            </div>
         </div>

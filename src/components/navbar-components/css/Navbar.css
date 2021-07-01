@@ -29,7 +29,7 @@
 
 .navbar-links {
     cursor: default;
-    width: 50%;
+    /* width: 50%; */
     margin: auto;
     margin-left : 10px;
 }

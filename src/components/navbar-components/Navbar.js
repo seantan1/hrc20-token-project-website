@@ -36,6 +36,7 @@ const Navbar = (props) => {
                         <a style={{ color: fontColor }} href="/">Home</a>
                         <a style={{ color: fontColor }} href="/vault">Vault</a>
                         <a style={{ color: fontColor }} href="/credits-store">Credits Store</a>
+                        <a style={{ color: fontColor }} href="/bounty">Claim Bounty</a>
                     </div>
                     {props.transactionPending && <div className="tx-pending-container"><img src={loadingGIF} id="loading-gif"></img></div>}
                     <div className="connect-wallet-button-container">
