@@ -52,6 +52,10 @@ const Info = () => {
             in slash fees collected in the reward pool. Your share in the pool is calculated as such:</p>
             <p>Your share = (Your Total rating) / (Total rating of all users) x 100%</p>
             <p>Example: If your rating is 100 and the total rating of all users is 1000, you own 10% in the reward pool share (with some deductions explained below).</p>
+            <p>As to not impose a force lock on users, there is a forfeit option for any locked deposit, where only 50% of the tokens will 
+            be returned to the user while the rest goes into the developer's vualt. This is so that in the case any user accidentally forfeited their 
+            deposits, devs can return the tokens to the user upon consideration. Any remaining tokens sent to the dev's vault this way will be 
+            used for event rewards or burned.</p>
             <p>Another thing to note about it that your rating will be reduced upon claiming your $PURU from a deposit, the reduced amount 
             is the amount you gained from that same deposit.</p>
 
