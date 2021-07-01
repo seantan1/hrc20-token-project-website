@@ -17,6 +17,7 @@ import Tokenomics from './components/home-components/Tokenomics';
 import TokenStatistics from './components/home-components/TokenStatistics';
 import FutureProjects from './components/home-components/FutureProjects';
 import WalletProviderWindow from './components/navbar-components/WalletProviderWindow';
+import Bounty from './components/bounty-components/Bounty';
 
 // puruVault
 import Deposits from './components/puruvault-components/Deposits';
@@ -63,8 +64,8 @@ function App() {
         setAlertSeverity(severity);
         setAlert(true);
         setTimeout(() => {
-                setAlert(false);
-            }, 5000);
+            setAlert(false);
+        }, 5000);
     }
 
     const signInOneWallet = async () => {
@@ -169,10 +170,13 @@ function App() {
                         </Route>
                         <Route exact path='/vault'>
                             <VaultBanner account={account} authorised={authorised} refreshData={refreshData} />
-                            <Deposits account={account} authorised={authorised} toggleWindow={toggleWalletWindow} refreshData={refreshData} setRefreshData={setRefreshData} setTransactionPending={setTransactionPending} showAlert={showAlert}/>
+                            <Deposits account={account} authorised={authorised} toggleWindow={toggleWalletWindow} refreshData={refreshData} setRefreshData={setRefreshData} setTransactionPending={setTransactionPending} showAlert={showAlert} />
                         </Route>
                         <Route exact path='/credits-store'>
                             <CreditsStoreBanner authorised={authorised} account={account} />
+                        </Route>
+                        <Route exact path='/bounty'>
+                            <Bounty authorised={authorised} account={account} />
                         </Route>
                         <Route render={() => <Redirect to={{ pathname: "/" }} />} />
                     </Switch>
