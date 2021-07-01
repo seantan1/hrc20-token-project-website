@@ -13,6 +13,7 @@ import {
 const DepositBox = (props) => {
 
     const [amount, setAmount] = useState('');
+    const [rating, setRating] = useState('');
     const [timeLeft, setTimeLeft] = useState('');
     const [timeLeftInEpoch, setTimeLeftInEpoch] = useState(0);
 
@@ -37,6 +38,7 @@ const DepositBox = (props) => {
             let contractVault = new web3.eth.Contract(VAULT_CONTRACT_ABI, VAULT_CONTRACT_ADDRESS);
             contractVault.methods.getDepositById(props.depositId).call().then(function (result) {
                 setAmount(web3.utils.fromWei(result[2]));
+                setRating(web3.utils.fromWei(result[3]));
                 let diff = result[0] - Math.floor(Date.now() / 1000);
                 setTimeLeft(secondsToDhms(diff));
                 setTimeLeftInEpoch(parseInt(diff));
@@ -76,7 +78,7 @@ const DepositBox = (props) => {
             <h3>Remaining Time:</h3>
             {timeLeft ? <p>{timeLeft}</p> : <p className="deposit-ready-to-claim-text">Ready To Claim!</p>}
             <h3>Rating & Credits earned:</h3>
-            <p>1500</p>
+            <p>{rating}</p>
             <button className="deposit-claim-button" onClick={claimDeposit}>Claim</button>
         </div>
     );
