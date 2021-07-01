@@ -10,14 +10,14 @@ import AlertTitle from '@material-ui/lab/AlertTitle';
 // global
 import Navbar from './components/navbar-components/Navbar';
 import Footer from './components/footer-components/Footer';
+import WalletProviderWindow from './components/navbar-components/WalletProviderWindow';
+import ProfileWindow from './components/navbar-components/ProfileWindow';
 
 // home
 import HomeBanner from './components/home-components/Banner';
 import Tokenomics from './components/home-components/Tokenomics';
 import TokenStatistics from './components/home-components/TokenStatistics';
 import FutureProjects from './components/home-components/FutureProjects';
-import WalletProviderWindow from './components/navbar-components/WalletProviderWindow';
-
 
 // puruVault
 import Deposits from './components/puruvault-components/Deposits';
@@ -54,6 +54,12 @@ function App() {
     // toggle wallet provider window handler
     const toggleWalletWindow = () => {
         setwalletWindowOpen(!walletWindowOpen);
+    };
+
+    // use to toggle the profile window
+    const [profileWindowOpen, setProfileWindowOpen] = useState(false);
+    const toggleProfileWindow = () => {
+        setProfileWindowOpen(!profileWindowOpen);
     };
 
     //use to toggle the forfeit deposit window
@@ -168,11 +174,12 @@ function App() {
 
     return (
         <div className="App">
+            {profileWindowOpen && <ProfileWindow authorised={authorised} account={account} toggleWindow={toggleProfileWindow}/>}
             {walletWindowOpen && <WalletProviderWindow toggleWindow={toggleWalletWindow} signInMetamask={signInMetamask} signInOneWallet={signInOneWallet} />}
             {forfeitDepositWindowOpen && <ForfeitDepositWindow authorised={authorised} account={account} toggleForfeitDepositWindowOpen={toggleForfeitDepositWindowOpen} forfeitDepositId={forfeitDepositId} setTransactionPending={setTransactionPending} showAlert={showAlert} setRefreshData={setRefreshData}/>}
             <div className="page-content-container">
                 <div className="sticky-navbar">
-                    <Navbar authorised={authorised} account={account} toggleWalletWindow={toggleWalletWindow} transactionPending={transactionPending} />
+                    <Navbar authorised={authorised} account={account} toggleWalletWindow={toggleWalletWindow} toggleProfileWindow={toggleProfileWindow} transactionPending={transactionPending} />
                     {alert && <Alert className="tx-alert" severity={alertSeverity} onClose={() => setAlert(false)}><AlertTitle>{alertTitle}</AlertTitle><a href={alertLink} target="_blank">{alertMessage}</a></Alert>}
                 </div>
                 <BrowserRouter>

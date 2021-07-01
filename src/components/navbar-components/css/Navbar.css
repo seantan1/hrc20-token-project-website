@@ -90,6 +90,17 @@
     height: 20px;
 }
 
+.profile-container {
+    position:fixed;
+    top:27px;
+    right:225px;
+    cursor: pointer;
+}
+
+.profile-image {
+    height: 50px;
+}
+
 
 /* Responsive NavBar */
 @media (max-width: 900px) {
