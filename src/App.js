@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import './App.css';
 import Web3 from 'web3';
@@ -36,12 +36,21 @@ function App() {
     const [errorAlert, setErrorAlert] = useState(false);
     const [errorAlertMessage, setErrorAlertMessage] = useState("");
 
+    const [refreshData, setRefreshData] = useState(false);
+    const [transactionPending, setTransactionPending] = useState(false);
+
     // use to toggle the wallet provider window
     const [walletWindowOpen, setwalletWindowOpen] = useState(false);
     // toggle wallet provider window handler
     const toggleWalletWindow = () => {
         setwalletWindowOpen(!walletWindowOpen);
     };
+
+    useEffect(() => {
+        if(!authorised) {
+            signInMetamask();
+        }
+    }, [authorised]);
 
     const signInOneWallet = async () => {
 
@@ -132,22 +141,20 @@ function App() {
         <div className="App">
             {walletWindowOpen && <WalletProviderWindow toggleWindow={toggleWalletWindow} signInMetamask={signInMetamask} signInOneWallet={signInOneWallet} />}
             <div className="page-content-container">
-
                 <div className="sticky-navbar">
-                    <Navbar authorised={authorised} account={account} toggleWalletWindow={toggleWalletWindow} />
+                    <Navbar authorised={authorised} account={account} toggleWalletWindow={toggleWalletWindow} transactionPending={transactionPending}/>
                 </div>
-
                 <BrowserRouter>
                     <Switch>
                         <Route exact path='/'>
                             <HomeBanner />
-                            <TokenStatistics />
+                            <TokenStatistics authorised={authorised} />
                             <Tokenomics />
                             <FutureProjects />
                         </Route>
                         <Route exact path='/vault'>
-                            <VaultBanner />
-                            <Deposits />
+                            <VaultBanner account={account} authorised={authorised} refreshData={refreshData} />
+                            <Deposits account={account} authorised={authorised} toggleWindow={toggleWalletWindow} refreshData={refreshData} setRefreshData={setRefreshData} setTransactionPending={setTransactionPending}/>
                         </Route>
                         <Route exact path='/credits-store'>
                             <CreditsStoreBanner />
@@ -157,7 +164,6 @@ function App() {
                 </BrowserRouter>
                 <Footer />
             </div>
-
         </div>
     );
 }
