@@ -176,7 +176,7 @@ function App() {
                             <CreditsStoreBanner authorised={authorised} account={account} />
                         </Route>
                         <Route exact path='/bounty'>
-                            <Bounty authorised={authorised} account={account} />
+                            <Bounty authorised={authorised} account={account} toggleWindow={toggleWalletWindow} setTransactionPending={setTransactionPending} refreshData={refreshData} setRefreshData={setRefreshData} />
                         </Route>
                         <Route render={() => <Redirect to={{ pathname: "/" }} />} />
                     </Switch>
