@@ -55,3 +55,14 @@
     padding-left: 50px;
     padding-right: 50px;
 }
+
+.tokenomics-note-text-container {
+    padding-top: 20px;
+    text-align: center;
+}
+
+.tokenomics-note-text {
+    text-decoration: none;
+    color:pink;
+    
+}

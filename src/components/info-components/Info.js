@@ -48,7 +48,7 @@ const Info = () => {
             Users who deposit their $PURU will receive an increase in rating which is calculated as such:</p>
             <p>Rating = $PURU deposited x Duration (days)</p>
             <p>Example: Depositing 10 $PURU for 30 days will give you 300 rating (stackable with every deposit made)</p>
-            <p>Users can have an unlimited number of deposits and stack as much rating as they like, as more rating would mean a bigger share 
+            <p>Users can have up to 100 deposits at a time and stack as much rating as they like, as more rating would mean a bigger share 
             in slash fees collected in the reward pool. Your share in the pool is calculated as such:</p>
             <p>Your share = (Your Total rating) / (Total rating of all users) x 100%</p>
             <p>Example: If your rating is 100 and the total rating of all users is 1000, you own 10% in the reward pool share (with some deductions explained below).</p>

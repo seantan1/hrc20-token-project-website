@@ -42,6 +42,9 @@ const Tokenomics = () => {
                             </p>
                         </div>
                     </div>
+                    <div className="tokenomics-note-text-container">
+                        <a className="tokenomics-note-text" href="/info">&gt;&gt; Please read the full tokenomics in detail before purchasing! &lt;&lt;</a>
+                    </div>
                     <div className="tokenomics-info-container-outer">
                         <div className="tokenomics-info-container-outer-left">
                             <div className="tokenomics-info-container">
