@@ -99,7 +99,7 @@ const Deposits = (props) => {
             });
             props.setRefreshData(false);
         }
-    }, [props.authorised, props.account, userDepositDataLoading, props.refreshData]);
+    }, [props, props.authorised, props.account, userDepositDataLoading, props.refreshData]);
 
     const createDeposit = () => {
         // remove warnings on load
@@ -130,11 +130,22 @@ const Deposits = (props) => {
 
         contractVault.methods.createDeposit(depositDuration, amount_ether).send({
             from: props.account
-        }).then(function (result) {
-            console.log(result); // DEBUG LOG
+        })
+        .on('transactionHash', function(hash){
+            props.setTransactionPending(true);
+            // console.log(hash);
+        })
+        .on('confirmation', function(confirmationNumber, receipt){
+            // console.log(confirmationNumber);
+            console.log(receipt);
+            props.setTransactionPending(false);
+            props.setRefreshData(true)
+        })
+        // .then(function (result) {
+        //     console.log(result); // DEBUG LOG
 
-            props.setRefreshData(true);
-        });
+        //     props.setRefreshData(true);
+        // });
     }
 
     const increaseAllowance = () => {
@@ -151,9 +162,20 @@ const Deposits = (props) => {
 
         contract.methods.approve(VAULT_CONTRACT_ADDRESS, amount_ether).send({
             from: props.account
-        }).then(function (result) {
-            console.log(result); // DEBUG LOG
-        });
+        })
+        .on('transactionHash', function(hash){
+            props.setTransactionPending(true);
+            // console.log(hash);
+        })
+        .on('confirmation', function(confirmationNumber, receipt){
+            // console.log(confirmationNumber);
+            console.log(receipt);
+            props.setTransactionPending(false);
+        })
+        
+        // .then(function (result) {
+        //     console.log(result); // DEBUG LOG
+        // });
     }
 
     return (

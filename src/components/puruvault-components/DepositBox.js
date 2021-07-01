@@ -51,10 +51,21 @@ const DepositBox = (props) => {
             let contractVault = new web3.eth.Contract(VAULT_CONTRACT_ABI, VAULT_CONTRACT_ADDRESS);
             contractVault.methods.claimDeposit((props.depositId)).send({
                 from: props.account
-            }).then(function (result) {
-                console.log(result); // DEBUG LOG
-                props.setRefreshData(true);
-            });
+            })
+            .on('transactionHash', function(hash){
+                props.setTransactionPending(true);
+                // console.log(hash);
+            })
+            .on('confirmation', function(confirmationNumber, receipt){
+                // console.log(confirmationNumber);
+                console.log(receipt);
+                props.setTransactionPending(false);
+                props.setRefreshData(true)
+            })
+            // .then(function (result) {
+            //     console.log(result); // DEBUG LOG
+            //     props.setRefreshData(true);
+            // });
         }
     }
 

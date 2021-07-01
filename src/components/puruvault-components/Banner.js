@@ -26,7 +26,7 @@ const Banner = (props) => {
 
             contractVault.methods.getRatingValueByAddress(props.account).call().then(function (result) {
                 setUserRating(web3.utils.fromWei(result));
-                console.log(web3.utils.fromWei(result));
+                // console.log(web3.utils.fromWei(result));
             });
 
             contractVault.methods.getRewardSharePercentage(props.account).call().then(function (result) {

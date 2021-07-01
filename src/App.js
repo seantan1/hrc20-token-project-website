@@ -154,7 +154,7 @@ function App() {
                         </Route>
                         <Route exact path='/vault'>
                             <VaultBanner account={account} authorised={authorised} refreshData={refreshData} />
-                            <Deposits account={account} authorised={authorised} toggleWindow={toggleWalletWindow} refreshData={refreshData} setRefreshData={setRefreshData}/>
+                            <Deposits account={account} authorised={authorised} toggleWindow={toggleWalletWindow} refreshData={refreshData} setRefreshData={setRefreshData} setTransactionPending={setTransactionPending}/>
                         </Route>
                         <Route exact path='/credits-store'>
                             <CreditsStoreBanner />
