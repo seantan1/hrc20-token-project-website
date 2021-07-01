@@ -65,7 +65,7 @@ const DepositBox = (props) => {
                 props.setTransactionPending(true);
                 // console.log(hash);
             })
-            .on('confirmation', function(confirmationNumber, receipt){
+            .on('receipt', function(receipt){
                 // console.log(confirmationNumber);
                 console.log(receipt);
                 props.setTransactionPending(false);

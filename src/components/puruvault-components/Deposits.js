@@ -135,12 +135,15 @@ const Deposits = (props) => {
             props.setTransactionPending(true);
             // console.log(hash);
         })
-        .on('confirmation', function(confirmationNumber, receipt){
+        .on('receipt', function(receipt){
             // console.log(confirmationNumber);
-            // console.log(receipt);
+            console.log(receipt);
             props.setTransactionPending(false);
             props.setRefreshData(true)
-        })
+            props.showAlert('Deposit success!', 'View transaction', "www.facebook.com", 'success');
+        }).on('error', function(error){
+
+        });
         // .then(function (result) {
         //     console.log(result); // DEBUG LOG
 
@@ -167,7 +170,7 @@ const Deposits = (props) => {
             props.setTransactionPending(true);
             // console.log(hash);
         })
-        .on('confirmation', function(confirmationNumber, receipt){
+        .on('receipt', function(receipt){
             // console.log(confirmationNumber);
             console.log(receipt);
             props.setTransactionPending(false);

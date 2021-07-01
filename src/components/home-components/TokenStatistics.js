@@ -35,9 +35,6 @@ const TokenStatistics = (props) => {
                 let bn = new BigNumber(web3.utils.fromWei(result)).div(1);
                 setTotalDistributedRewards(bn.toString());
             });
-
-            
-
         }
     }, [props.authorised]);
 
@@ -47,16 +44,16 @@ const TokenStatistics = (props) => {
                 <div className="stats-section-inner-frame">
                     <div className="stats-section-inner-frame-inner">
                         <div className="stats-container">
-                            <h1>Unique Holders</h1>
-                            <p>1,306</p>
+                            <h1>Total Supply</h1>
+                            <p>1 million <span className="pink-text">$PURU</span></p>
                         </div>
                         <div className="stats-container">
                             <h1>Locked in Vault</h1>
-                            <p>{totalLocked} tokens</p>
+                            <p>{totalLocked} <span className="pink-text">$PURU</span></p>
                         </div>
                         <div className="stats-container">
                             <h1>Distributed rewards</h1>
-                            <p>{totalDistributedRewards} tokens</p>
+                            <p>{totalDistributedRewards} <span className="pink-text">$PURU</span></p>
                         </div>
                     </div>
                 </div>
