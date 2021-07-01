@@ -3,6 +3,7 @@ import './css/Navbar.css';
 import '../../../node_modules/font-awesome/css/font-awesome.css';
 import PuruBrandWhite from '../../assets/white/4.png';
 import PuruBrandBlack from '../../assets/black/4.png';
+import PuruBrandPink from '../../assets/pink/4.png';
 import loadingGIF from '../../assets/loading-icon-transparent-background-12.jpg';
 
 const Navbar = (props) => {
@@ -10,6 +11,8 @@ const Navbar = (props) => {
     // hook for nav bar css change on scroll
     const [backgroundColor, setbackgroundColor] = useState("none");
     const [fontColor, setfontColor] = useState("white");
+    const [hoverBrandImage, setHoverBrandImage] = useState(false);
+    const [hoverProfileImage, setHoverProfileImage] = useState(false);
 
     // scroll event listener
     window.onscroll = function () {
@@ -28,8 +31,17 @@ const Navbar = (props) => {
         <div>
             <div className="navbar" style={{ backgroundColor: backgroundColor }}>
                 <div className="navbar-inner">
-                    <div className="brand-container">
-                        {fontColor == "white" ? <a href="/"><img className="brand-image" src={PuruBrandWhite}></img></a> : <a href="/"><img className="brand-image" src={PuruBrandBlack}></img></a>}
+                    <div className="brand-container" onMouseEnter={() => setHoverBrandImage(true)} onMouseLeave={() => setHoverBrandImage(false)}>
+                        {hoverBrandImage ?
+                            <div>
+                                <a href="/"><img className="brand-image" src={PuruBrandPink}></img></a>
+                            </div>
+                            :
+                            <div>
+                                {fontColor == "white" ? <a href="/"><img className="brand-image" src={PuruBrandWhite}></img></a> : <a href="/"><img className="brand-image" src={PuruBrandBlack}></img></a>}
+                            </div>
+                        }
+
                     </div>
 
                     <div className="nav navbar-links">
@@ -39,10 +51,21 @@ const Navbar = (props) => {
                         <a style={{ color: fontColor }} href="/bounty">Claim Bounty</a>
                         <a style={{ color: fontColor }} href="/info">Info</a>
                     </div>
-                    {props.transactionPending && 
+                    <div className="profile-container" onClick={props.toggleProfileWindow} onMouseEnter={() => setHoverProfileImage(true)} onMouseLeave={() => setHoverProfileImage(false)}>
+                        {hoverProfileImage ?
+                            <div>
+                                <img className="profile-image" src={PuruBrandPink}></img>
+                            </div>
+                            :
+                            <div>
+                                {fontColor == "white" ? <img className="profile-image" src={PuruBrandWhite}></img> : <img className="profile-image" src={PuruBrandBlack}></img>}
+                            </div>
+                        }
+                    </div>
+                    {props.transactionPending &&
                         <div className="tx-pending-container">
-                        <img src={loadingGIF} id="loading-gif"></img>
-                        <p style={{ color: fontColor }}>Transaction pending</p>
+                            <img src={loadingGIF} id="loading-gif"></img>
+                            <p style={{ color: fontColor }}>Transaction pending</p>
                         </div>
                     }
                     <div className="connect-wallet-button-container">
