@@ -128,7 +128,7 @@ const Deposits = (props) => {
         let contractVault = new web3.eth.Contract(VAULT_CONTRACT_ABI, VAULT_CONTRACT_ADDRESS);
         let amount_ether = web3.utils.toWei(depositAmount, 'ether');
 
-        contractVault.methods.createDeposit(depositDuration, amount_ether).send({
+        contractVault.methods.createDeposit(parseInt(depositDuration), amount_ether).send({
             from: props.account
         })
         .on('transactionHash', function(hash){
@@ -137,7 +137,7 @@ const Deposits = (props) => {
         })
         .on('confirmation', function(confirmationNumber, receipt){
             // console.log(confirmationNumber);
-            console.log(receipt);
+            // console.log(receipt);
             props.setTransactionPending(false);
             props.setRefreshData(true)
         })
@@ -187,7 +187,7 @@ const Deposits = (props) => {
             :
             <div className="deposit-box-container">
                 {userDepositIds.map(mapping => (
-                    <DepositBox key={mapping} authorised={props.authorised} depositId={mapping} account={props.account} refreshData={props.refreshData} setRefreshData={props.setRefreshData} />
+                    <DepositBox key={mapping} authorised={props.authorised} depositId={mapping} account={props.account} refreshData={props.refreshData} setRefreshData={props.setRefreshData} setTransactionPending={props.setTransactionPending} />
                 ))}
             </div>
         }

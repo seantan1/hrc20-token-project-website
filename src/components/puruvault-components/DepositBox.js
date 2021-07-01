@@ -40,7 +40,7 @@ const DepositBox = (props) => {
                 let diff = result[0] - Math.floor(Date.now() / 1000);
                 setTimeLeft(secondsToDhms(diff));
                 setTimeLeftInEpoch(parseInt(diff));
-                console.log(timeLeftInEpoch);
+                // console.log(timeLeftInEpoch);
             });
         }
     }, [props.authorised,props.depositId,timeLeftInEpoch, props.refreshData]);
