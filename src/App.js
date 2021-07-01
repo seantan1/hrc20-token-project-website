@@ -4,6 +4,7 @@ import './App.css';
 import Web3 from 'web3';
 import detectEthereumProvider from '@metamask/detect-provider';
 import Alert from '@material-ui/lab/Alert';
+import AlertTitle from '@material-ui/lab/AlertTitle';
 
 // component imports
 // global
@@ -33,8 +34,11 @@ function App() {
     const [account, setAccount] = useState('');
     const [authorised, setAuthorised] = useState(false);
     const [walletType, setwalletType] = useState('');
-    const [errorAlert, setErrorAlert] = useState(false);
-    const [errorAlertMessage, setErrorAlertMessage] = useState("");
+    const [alert, setAlert] = useState(false);
+    const [alertTitle, setAlertTitle] = useState("");
+    const [alertMessage, setAlertMessage] = useState("");
+    const [alertLink, setAlertLink] = useState("");
+    const [alertSeverity, setAlertSeverity] = useState("");
 
     const [refreshData, setRefreshData] = useState(false);
     const [transactionPending, setTransactionPending] = useState(false);
@@ -47,10 +51,21 @@ function App() {
     };
 
     useEffect(() => {
-        if(!authorised) {
+        if (!authorised) {
             signInMetamask();
         }
     }, [authorised]);
+
+    const showAlert = (title, message, link, severity) => {
+        setAlertTitle(title);
+        setAlertMessage(message);
+        setAlertLink(link);
+        setAlertSeverity(severity);
+        setAlert(true);
+        setTimeout(() => {
+                setAlert(false);
+            }, 5000);
+    }
 
     const signInOneWallet = async () => {
 
@@ -80,8 +95,7 @@ function App() {
         if (!provider) {
             // console.error('Metamask not found');
             // error pop up
-            setErrorAlert(true);
-            setErrorAlertMessage('Metamask extension not found.');
+            showAlert('Metamask extension not found.', 'error');
             return;
         }
 
@@ -142,7 +156,8 @@ function App() {
             {walletWindowOpen && <WalletProviderWindow toggleWindow={toggleWalletWindow} signInMetamask={signInMetamask} signInOneWallet={signInOneWallet} />}
             <div className="page-content-container">
                 <div className="sticky-navbar">
-                    <Navbar authorised={authorised} account={account} toggleWalletWindow={toggleWalletWindow} transactionPending={transactionPending}/>
+                    <Navbar authorised={authorised} account={account} toggleWalletWindow={toggleWalletWindow} transactionPending={transactionPending} />
+                    {alert && <Alert className="tx-alert" severity={alertSeverity} onClose={() => setAlert(false)}><AlertTitle>{alertTitle}</AlertTitle><a href={alertLink} target="_blank">{alertMessage}</a></Alert>}
                 </div>
                 <BrowserRouter>
                     <Switch>
@@ -154,10 +169,10 @@ function App() {
                         </Route>
                         <Route exact path='/vault'>
                             <VaultBanner account={account} authorised={authorised} refreshData={refreshData} />
-                            <Deposits account={account} authorised={authorised} toggleWindow={toggleWalletWindow} refreshData={refreshData} setRefreshData={setRefreshData} setTransactionPending={setTransactionPending}/>
+                            <Deposits account={account} authorised={authorised} toggleWindow={toggleWalletWindow} refreshData={refreshData} setRefreshData={setRefreshData} setTransactionPending={setTransactionPending} showAlert={showAlert}/>
                         </Route>
                         <Route exact path='/credits-store'>
-                            <CreditsStoreBanner />
+                            <CreditsStoreBanner authorised={authorised} account={account} />
                         </Route>
                         <Route render={() => <Redirect to={{ pathname: "/" }} />} />
                     </Switch>
