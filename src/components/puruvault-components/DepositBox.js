@@ -10,6 +10,10 @@ import {
     VAULT_CONTRACT_ABI
 } from '../../contract-data/token-contract-data.js';
 
+// bignumber config
+const BigNumber = require('bignumber.js');
+BigNumber.config({ DECIMAL_PLACES: 2 }) ;
+
 const DepositBox = (props) => {
 
     const [amount, setAmount] = useState('');
@@ -37,12 +41,15 @@ const DepositBox = (props) => {
             let web3 = new Web3(window.ethereum);
             let contractVault = new web3.eth.Contract(VAULT_CONTRACT_ABI, VAULT_CONTRACT_ADDRESS);
             contractVault.methods.getDepositById(props.depositId).call().then(function (result) {
-                setAmount(web3.utils.fromWei(result[2]));
-                setRating(web3.utils.fromWei(result[3]));
+                let bn1 = new BigNumber(web3.utils.fromWei(result[2])).div(1);
+                setAmount(bn1.toString());
+                let bn2 = new BigNumber(web3.utils.fromWei(result[3])).div(1);
+                setRating(bn2.toString());
+                // setAmount(web3.utils.fromWei(result[2]));
+                // setRating(web3.utils.fromWei(result[3]));
                 let diff = result[0] - Math.floor(Date.now() / 1000);
                 setTimeLeft(secondsToDhms(diff));
                 setTimeLeftInEpoch(parseInt(diff));
-                // console.log(timeLeftInEpoch);
             });
         }
     }, [props.authorised,props.depositId,timeLeftInEpoch, props.refreshData]);

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import './css/Banner.css';
 import '../../../node_modules/font-awesome/css/font-awesome.css';
 import PuruImage5 from "../../assets/white/5.png";
-
 import Web3 from 'web3';
 
 // import constants
@@ -12,6 +11,10 @@ import {
     VAULT_CONTRACT_ADDRESS,
     VAULT_CONTRACT_ABI
 } from '../../contract-data/token-contract-data.js';
+
+// bignumber config
+const BigNumber = require('bignumber.js');
+BigNumber.config({ DECIMAL_PLACES: 2 }) ;
 
 const Banner = (props) => {
 
@@ -25,14 +28,15 @@ const Banner = (props) => {
             let contractVault = new web3.eth.Contract(VAULT_CONTRACT_ABI, VAULT_CONTRACT_ADDRESS);
 
             contractVault.methods.getRatingValueByAddress(props.account).call().then(function (result) {
-                setUserRating(web3.utils.fromWei(result));
-                // console.log(web3.utils.fromWei(result));
+                let bn = new BigNumber(web3.utils.fromWei(result)).div(1);
+                setUserRating(bn.toString());
+                // setUserRating(web3.utils.fromWei(result));
             });
 
             contractVault.methods.getRewardSharePercentage(props.account).call().then(function (result) {
                 let rewardShare = result/10000000;
                 if (rewardShare > 0 && rewardShare < 1/1000000) {
-                    rewardShare = "<0.00001"
+                    rewardShare = "<0.00001";
                 }
                 setUserShareInRewards(rewardShare);
             });

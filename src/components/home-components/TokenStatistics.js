@@ -11,6 +11,10 @@ import {
     VAULT_CONTRACT_ABI
 } from '../../contract-data/token-contract-data.js';
 
+// bignumber config
+const BigNumber = require('bignumber.js');
+BigNumber.config({ DECIMAL_PLACES: 2 }) ;
+
 const TokenStatistics = (props) => {
 
     const [totalLocked, setTotalLocked] = useState('');
@@ -23,12 +27,17 @@ const TokenStatistics = (props) => {
             let contractVault = new web3.eth.Contract(VAULT_CONTRACT_ABI, VAULT_CONTRACT_ADDRESS);
 
             contractVault.methods.getLockedSupply().call().then(function (result) {
-                setTotalLocked(web3.utils.fromWei(result));
+                let bn = new BigNumber(web3.utils.fromWei(result)).div(1);
+                setTotalLocked(bn.toString());
             });
 
             contractVault.methods.getTotalDistributedRewards().call().then(function (result) {
-                setTotalDistributedRewards(web3.utils.fromWei(result));
+                let bn = new BigNumber(web3.utils.fromWei(result)).div(1);
+                setTotalDistributedRewards(bn.toString());
             });
+
+            
+
         }
     }, [props.authorised]);
 
