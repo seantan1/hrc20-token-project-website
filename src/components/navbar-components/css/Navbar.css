@@ -103,11 +103,29 @@
 
 
 /* Responsive NavBar */
-@media (max-width: 900px) {
-    .nav-bar-right-hide-in-mobile {
-        display: none !important;
+/* navbar links font incremental adjustments*/
+@media (max-width: 1300px) {
+    .navbar-links a {
+        font-size: 1.5em;
     }
-    .nav-bar-right-display-in-mobile {
-        display: inline-flex;
+}
+
+@media (max-width: 1100px) {
+    .navbar-links a {
+        /* padding-left: 1em;
+        padding-right: 1em; */
+        font-size: 1.3em;
+    }
+}
+/* hide navbar links */
+@media (max-width: 990px) {
+    .navbar-links {
+        display:none;
+    }
+}
+/* hide profile button */
+@media (max-width: 450px) {
+    .profile-container {
+        display:none;
     }
 }

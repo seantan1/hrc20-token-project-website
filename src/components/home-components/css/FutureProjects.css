@@ -13,7 +13,6 @@
 
 .future-projects-section-inner-frame {
     margin:auto;
-    padding:auto;
     width: 80%;
     
 }
@@ -24,7 +23,6 @@
 }
 
 .future-projects-container {
-    /* margin:auto; */
     width:30%;
     padding: 1em;
     text-align: center;
@@ -51,4 +49,16 @@
 .future-project-progress-status-text {
     font-size: 30px;
     color:pink;
+}
+
+/* Responsive */
+@media (max-width: 1000px) {
+    .future-projects-section-inner-frame-inner {
+        display:block;
+    }
+    .future-projects-container {
+        width: auto;
+        margin: 0px;
+        margin-bottom: 50px;
+    }
 }

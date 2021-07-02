@@ -20,16 +20,17 @@ const Info = () => {
             <p>This section will explain all there is to know on how the entire system work.</p>
             <h3>Slash Fee</h3>
             <p>A 35% slash fee will be imposed on ALL outbound transfers made by users, this includes:</p>
-            <p>1. Selling at a DEX/Liquidity pool, as you "transfer out" your $PURUs to the liquidity pool, the liquidity pool is also smart
+            <p><strong>1.</strong> Selling at a DEX/Liquidity pool, as you "transfer out" your $PURUs to the liquidity pool, the liquidity pool is also smart
             enough to pay the correct amount after the slash fee is taken.</p>
-            <p>2. Transferring to another wallet or unauthorised contract, so please be careful to keep your $PURU on just one wallet!</p>
-            <p>3. Adding liquidity, yes PLEASE DO NOT add liquidity for $PURU as transferring to the liquidity pool is counted as an outbound transfer. 
+            <p><strong>2.</strong> Transferring to another wallet or unauthorised contract, so please be careful to keep your $PURU on just one wallet!</p>
+            <p><strong>3.</strong> Adding liquidity, yes PLEASE DO NOT add liquidity for $PURU as transferring to the liquidity pool is counted as an outbound transfer. 
             Liquidity will be added by the devs if required.</p>
+            <br></br>
             <p>However, certain addresses are "whitelisted" to transfer or accept $PURUs without getting a slash fee, this includes:</p>
-            <p>1. Recognized liquidity pools, which will not receive a slash fee when transferring out $PURU to users, thus buyers do not suffer the slash fee.</p>
-            <p>2. Authorised contracts used on this website such as the vault's contract will also bypass the slash fee so that users do
+            <p><strong>1.</strong> Recognized liquidity pools, which will not receive a slash fee when transferring out $PURU to users, thus buyers do not suffer the slash fee.</p>
+            <p><strong>2.</strong> Authorised contracts used on this website such as the vault's contract will also bypass the slash fee so that users do
             not get taxed for creating or claiming a deposit.</p>
-            <p>3. Developers fund vault is also exempt from the outbound transfer slash fee for reasons such as adding liquidity, airdrop events and paying bounties. 
+            <p><strong>3.</strong> Developers fund vault is also exempt from the outbound transfer slash fee for reasons such as adding liquidity, airdrop events and paying bounties. 
             All related wallet and contract addresses will be listed below and transparent to all users.</p>
             <p>The slash fee is in place to give holders a peace of mind that not only panic sellers and ruggers have a less 35% impact on 
             the market, but also having that slash fee rewarded back to them!</p>
@@ -48,10 +49,12 @@ const Info = () => {
             Users who deposit their $PURU will receive an increase in rating which is calculated as such:</p>
             <p>Rating = $PURU deposited x Duration (days)</p>
             <p>Example: Depositing 10 $PURU for 30 days will give you 300 rating (stackable with every deposit made)</p>
+            <br></br>
             <p>Users can have up to 100 deposits at a time and stack as much rating as they like, as more rating would mean a bigger share 
             in slash fees collected in the reward pool. Your share in the pool is calculated as such:</p>
             <p>Your share = (Your Total rating) / (Total rating of all users) x 100%</p>
             <p>Example: If your rating is 100 and the total rating of all users is 1000, you own 10% in the reward pool share (with some deductions explained below).</p>
+            <br></br>
             <p>As to not impose a force lock on users, there is a forfeit option for any locked deposit, where only 50% of the tokens will 
             be returned to the user while the rest goes into the developer's vualt. This is so that in the case any user accidentally forfeited their 
             deposits, devs can return the tokens to the user upon consideration. Any remaining tokens sent to the dev's vault this way will be 
@@ -89,7 +92,9 @@ const Info = () => {
             <p>Hello, I'm pururun who is the developer for everything on this project except for the cute PURU arts, which is commisioned from <a href="https://twitter.com/HibikiDxz">Shino</a>, 
             and the storytelling done by DKLS, and not forgetting the support from all the degens in the Freyala Discord Community. I am also a mini dev for Freyala and have since 
             then passionately learned Solidity and somehow made this project possible! No forks and lame copy practices was done for this project, all 100% 
-            made from stratch, using Solidity for the contracts and React JS for the website. The reason I chose the Harmony network for my project 
+            made from stratch, using Solidity for the contracts and React JS for the website. </p>
+            <br></br>
+            <p>The reason I chose the Harmony network for my project 
             is because the community here is just too friendly! I've never been to a community where users and developers mingle so happily together. This 
             project is made so that everyone can have fun collecting PURUs, enjoy the storytelling and have a laugh that they made st0nks by investing in $PURU.</p>
 

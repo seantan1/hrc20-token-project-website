@@ -66,3 +66,16 @@
     color:pink;
     
 }
+
+/* Responsive */
+@media (max-width: 1000px) {
+    .tokenomics-section-inner-frame-inner {
+        display: block;
+    }
+    .tokenomics-container {
+        width:auto;
+    }
+    .tokenomics-info-container {
+        width:auto;
+    }
+}

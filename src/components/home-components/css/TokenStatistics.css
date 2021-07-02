@@ -13,9 +13,7 @@
 
 .stats-section-inner-frame {
     margin:auto;
-    padding:auto;
     width: 80%;
-    
 }
 
 .stats-section-inner-frame-inner {
@@ -43,4 +41,36 @@
 
 .pink-text {
     color:pink;
+}
+
+/* Responsive */
+@media (max-width: 1500px) {
+    .stats-section-inner-frame h1 {
+        font-size:30px;
+    }
+    .stats-section-inner-frame p {
+        font-size:20px;
+    }
+}
+@media (max-width: 1350px) {
+    .stats-section-inner-frame h1 {
+        font-size:25px;
+    }
+    .stats-section-inner-frame p {
+        font-size:15px;
+    }
+}
+@media (max-width: 1150px) {
+    .stats-section-inner-frame {
+        width: 90%;
+    }
+}
+@media (max-width: 600px) {
+    .stats-section-inner-frame-inner {
+        display:block;
+    }
+    .stats-container {
+        width:auto;
+        padding:0px;
+    }
 }
