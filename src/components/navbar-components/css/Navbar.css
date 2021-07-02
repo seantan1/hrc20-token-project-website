@@ -25,6 +25,7 @@
 
 .brand-container {
     width: fit-content;
+    cursor: pointer;
 }
 
 .navbar-links {

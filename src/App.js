@@ -9,6 +9,7 @@ import AlertTitle from '@material-ui/lab/AlertTitle';
 // global
 import Navbar from './components/navbar-components/Navbar';
 import Footer from './components/footer-components/Footer';
+import NavlinksWindow from './components/navbar-components/NavlinksWindow';
 import WalletProviderWindow from './components/navbar-components/WalletProviderWindow';
 import ProfileWindow from './components/navbar-components/ProfileWindow';
 
@@ -46,6 +47,12 @@ function App() {
 
     const [refreshData, setRefreshData] = useState(false);
     const [transactionPending, setTransactionPending] = useState(false);
+
+    // use to toggle the navlinks window
+    const [navlinksWindowOpen, setNavlinksWindowOpen] = useState(false);
+    const toggleNavlinksWindow = () => {
+        setNavlinksWindowOpen(!navlinksWindowOpen);
+    };
 
     // use to toggle the wallet provider window
     const [walletWindowOpen, setwalletWindowOpen] = useState(false);
@@ -174,9 +181,10 @@ function App() {
             {profileWindowOpen && <ProfileWindow authorised={authorised} account={account} toggleWindow={toggleProfileWindow}/>}
             {walletWindowOpen && <WalletProviderWindow toggleWindow={toggleWalletWindow} signInMetamask={signInMetamask} signInOneWallet={signInOneWallet} />}
             {forfeitDepositWindowOpen && <ForfeitDepositWindow authorised={authorised} account={account} toggleForfeitDepositWindowOpen={toggleForfeitDepositWindowOpen} forfeitDepositId={forfeitDepositId} setTransactionPending={setTransactionPending} showAlert={showAlert} setRefreshData={setRefreshData}/>}
+            {navlinksWindowOpen && <NavlinksWindow toggleWindow={toggleNavlinksWindow} toggleProfileWindow={toggleProfileWindow}/>}
             <div className="page-content-container">
                 <div className="sticky-navbar">
-                    <Navbar authorised={authorised} account={account} toggleWalletWindow={toggleWalletWindow} toggleProfileWindow={toggleProfileWindow} transactionPending={transactionPending} />
+                    <Navbar authorised={authorised} account={account} toggleNavlinksWindow={toggleNavlinksWindow} toggleWalletWindow={toggleWalletWindow} toggleProfileWindow={toggleProfileWindow} transactionPending={transactionPending} />
                     {alert && <Alert className="tx-alert" severity={alertSeverity} onClose={() => setAlert(false)}><AlertTitle>{alertTitle}</AlertTitle><a href={alertLink} target="_blank" rel="noreferrer">{alertMessage}</a></Alert>}
                 </div>
                 <BrowserRouter>
