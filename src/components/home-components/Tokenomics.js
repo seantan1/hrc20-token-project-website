@@ -14,17 +14,17 @@ const Tokenomics = () => {
                 <div className="tokenomics-section-inner-frame">
                     <div className="tokenomics-section-inner-frame-inner">
                         <div className="tokenomics-container">
-                            <h1>35%</h1>
+                            <h1>20%</h1>
                             <h3>Fee on tranfer</h3>
                             <p>
-                                High slash fee collected from panic sellers into the vault which are distributed to chad stakers.
+                                A slash fee is collected from panic sellers into the vault which are distributed to chad stakers.
                             </p>
                         </div>
                         <div className="tokenomics-container">
                             <h1>0%</h1>
                             <h3>Fee for chads</h3>
                             <p>
-                                Upon completing the minimum staking period, users receive an exempt transfer fee equal to their amount staked.
+                                Upon completing the minimum staking period, users receive a slash fee exemption equal to their amount staked.
                             </p>
                         </div>
                         <div className="tokenomics-container">
@@ -38,7 +38,7 @@ const Tokenomics = () => {
                             <h1>5%</h1>
                             <h3>Dev's cut</h3>
                             <p>
-                                5% of all distributed rewards goes into the development fund to build more awesome stuff on Harmony!
+                                5% of all distributed rewards goes into the development fund for events and to build more awesome stuff on Harmony!
                             </p>
                         </div>
                     </div>
@@ -56,8 +56,9 @@ const Tokenomics = () => {
                             <div className="tokenomics-info-container">
                                 <h1>Reward Calculation for stakers</h1>
                                 <p>Your share of rewards is based on your rating where:</p>
-                                <p>Rating = (Token amount) x (Number of days locked)</p>
-                                <p>Your share of rewards = (Your rating)/(Total rating) x 100%</p>
+                                <p>Rating earned = (Token amount) x (Number of days locked)^2 / 2</p>
+                                <p>Your share of rewards = (Your total rating)/(Everyone's rating) x 100%</p>
+                                <a className="tokenomics-info-container-read-more" href="/info">Read more about the tokenomics</a>
                             </div>
                             <div className="tokenomics-info-container">
                                 <h1>Earn credits!</h1>

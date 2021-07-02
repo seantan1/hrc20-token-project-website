@@ -64,7 +64,13 @@
 .tokenomics-note-text {
     text-decoration: none;
     color:pink;
-    
+}
+
+.tokenomics-info-container-read-more {
+    text-decoration: none;
+    color:pink;
+    font-family: monospace;
+    font-size:18px;
 }
 
 /* Responsive */
