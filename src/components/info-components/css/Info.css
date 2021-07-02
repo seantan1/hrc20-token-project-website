@@ -57,3 +57,16 @@
     padding-top: 20px;
 }
 
+/* Responsive */
+@media (max-width: 900px) {
+    .info-content-container {
+        padding: 50px;
+    }
+}
+
+@media (max-width: 500px) {
+    .info-content-container {
+        padding: 20px;
+    }
+}
+
