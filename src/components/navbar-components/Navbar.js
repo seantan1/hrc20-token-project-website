@@ -47,14 +47,14 @@ const Navbar = (props) => {
             {!hideNavBar &&
                 <div className="navbar" style={{ backgroundColor: backgroundColor, opacity: navBarOpacity }}>
                     <div className="navbar-inner">
-                        <div className="brand-container" onMouseEnter={() => setHoverBrandImage(true)} onMouseLeave={() => setHoverBrandImage(false)}>
+                        <div className="brand-container" onMouseEnter={() => setHoverBrandImage(true)} onMouseLeave={() => setHoverBrandImage(false)} onClick={props.toggleNavlinksWindow}>
                             {hoverBrandImage ?
                                 <div>
-                                    <a href="/"><img className="brand-image" src={PuruBrandPink} alt="puru"></img></a>
+                                    <img className="brand-image" src={PuruBrandPink} alt="puru"></img>
                                 </div>
                                 :
                                 <div>
-                                    {fontColor === "white" ? <a href="/"><img className="brand-image" src={PuruBrandWhite} alt="puru"></img></a> : <a href="/"><img className="brand-image" src={PuruBrandBlack} alt="puru"></img></a>}
+                                    {fontColor === "white" ? <img className="brand-image" src={PuruBrandWhite} alt="puru"></img> : <img className="brand-image" src={PuruBrandBlack} alt="puru"></img>}
                                 </div>
                             }
 
