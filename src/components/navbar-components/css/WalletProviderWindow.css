@@ -60,6 +60,11 @@
     padding-left: 50px;
 }
 
+.pop-up-window-wallet-notice {
+    font-size:10px;
+    text-align:center;
+}
+
 /* Mobile Responsive view */
 @media (max-width: 1160px) {
     .pop-up-window {
