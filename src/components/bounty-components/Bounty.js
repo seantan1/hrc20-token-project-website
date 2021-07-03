@@ -103,18 +103,13 @@ const Bounty = (props) => {
                 <h1>What is the bounty?</h1>
                 <div className="bounty-info-paragraph-container">
                     <p>
-                        All slash fees are accumulated into the reward pool waiting to be distributed
-                        to all entitled users who staked in the $PURU Vault. By claiming the bounty,
-                        you are paying the network fee required for the rewards distribution. In return
-                        for the hardwork, you will be rewarded with $PURU for your contribution!
+                    All slash fees are accumulated into the reward pool, waiting to be distributed to all entitled users who staked in the $PURU Vault. By claiming the bounty, you are paying the network fee required for the rewards distribution. In return for the hard work, you will be rewarded with $PURU for your contribution!
                     </p>
                     <p>
-                        Puru has made it so that the bounty reward updates automatically everytime a slash fee is
-                        collected to the pool, how cool is that!
+                    Puru has made it so that the bounty reward updates automatically every time a slash fee is collected to the pool. How cool is that!
                     </p>
                     <p>
-                        Keep in mind that there might potentially be other users fighting for the bounty
-                        as well, and make sure that the reward is worth the network fee you are paying for!
+                    Keep in mind that there might potentially be other users fighting for the bounty as well, and make sure that the reward is worth the network fee you are paying for!
                     </p>
                 </div>
 
