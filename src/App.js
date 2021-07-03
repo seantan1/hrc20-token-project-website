@@ -65,13 +65,29 @@ const harmonyRpcUrl = HARMONY_MAIN_NET_RPC_URL;
 // const harmonyRpcUrl = HARMONY_TEST_NET_RPC_URL;
 
 function App() {
+    // load once
+    const [loadOnce, setLoadOnce] = useState(false);
     /* user's wallet account useStates
         account: user's account address 0x... or one....
         authorised: has user authorised/signed-in a wallet
         walletType: wallet type - metamask, onewallet
     */
     const [account, setAccount] = useState('');
+    const handleAccount = (input_account) => {
+        setAccount(input_account);
+        localStorage.setItem( 'account', input_account );
+    }
     const [authorised, setAuthorised] = useState(false);
+    const handleAuthorised = (input_authorised) => {
+        if (input_authorised) {
+            setAuthorised(true);
+            localStorage.setItem( 'authorised', "true" );
+        }
+        else {
+            setAuthorised(false);
+            localStorage.setItem( 'authorised', "false" );
+        }
+    }
     const [alert, setAlert] = useState(false);
     const [alertTitle, setAlertTitle] = useState("");
     const [alertMessage, setAlertMessage] = useState("");
@@ -129,7 +145,7 @@ function App() {
         if (accounts.length === 0) {
             // console.error('Not found accounts');
         } else {
-            setAccount(accounts[0]);
+            handleAccount(accounts[0]);
             // console.log('walletType: ' + walletType + ' addres: ' + account);
         }
     };
@@ -155,24 +171,23 @@ function App() {
 
         provider.on('disconnect', () => {
             // console.log('disconnect');
-            setAuthorised(false);
-            setAccount('');
-            attemptMetamaskConnection(provider);
+            handleAuthorised(false);
+            handleAccount('');
 
         });
 
         provider.on('chainIdChanged', (chainId) => {
             // console.log('chainIdChanged', chainId);
-            setAuthorised(false);
-            setAccount('');
+            handleAuthorised(false);
+            handleAccount('');
         });
 
         // detect Network account change
         provider.on('networkChanged', (networkId) => {
             // console.log('networkChanged', networkId);
             if (window.ethereum.networkVersion !== harmonyNetVersion) {
-                setAuthorised(false);
-                setAccount('');
+                handleAuthorised(false);
+                handleAccount('');
             }
         });
 
@@ -189,10 +204,10 @@ function App() {
         provider.request({ method: 'eth_requestAccounts' })
             .then(async params => {
                 handleAccountsChanged(params);
-                setAuthorised(true);
+                handleAuthorised(true);
             })
             .catch(err => {
-                setAuthorised(false);
+                handleAuthorised(false);
 
                 if (err.code === 4001) {
                     // console.error('Please connect to MetaMask.');
@@ -202,12 +217,22 @@ function App() {
             });
     }
 
-    // auto prompt metamask sign in
+    // attempt to fetch credentials from local storage
     useEffect(() => {
-        if (!authorised) {
-            signInMetamask();
+        if (!loadOnce) {
+            if (localStorage.getItem( 'account' ) && localStorage.getItem( 'authorised')) {
+                signInMetamask();
+            }
+            // handleAccount(localStorage.getItem( 'account' ) || '');
+            // if (localStorage.getItem( 'authorised') === 'true') {
+            //     handleAuthorised(true);
+            // }
+            // else {
+            //     handleAuthorised(false);
+            // }
+            setLoadOnce(true);
         }
-    }, [authorised]);
+    });
 
     return (
         <div className="App">
