@@ -146,7 +146,7 @@ function App() {
         if (!provider) {
             // console.error('Metamask not found');
             // error pop up
-            showAlert('Metamask extension not found.', 'error');
+            showAlert('Metamask extension not found.','Install metamask', "https://metamask.io/", 'error');
             return;
         }
 
@@ -207,7 +207,7 @@ function App() {
         if (!authorised) {
             signInMetamask();
         }
-    });
+    }, [authorised]);
 
     return (
         <div className="App">
