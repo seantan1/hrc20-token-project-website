@@ -3,7 +3,7 @@ import './css/WalletProviderWindow.css';
 
 // import icons
 import MetamaskIcon from '../../assets/metamaskIcon.png';
-import OneIcon from '../../assets/oneIcon.png';
+// import OneIcon from '../../assets/oneIcon.png';
 
 // outside alerter hook
 import OutsideAlerter from "../hooks/OutsideAlerter";
@@ -27,10 +27,7 @@ export default function WalletProviderWindow({ toggleWindow, signInMetamask, sig
                             <p className="wallet-text">MetaMask</p>
                         </div>
 
-                        <div className="wallet-option-container" onClick={() => { signInOneWallet(); handleCloseButton(); }}>
-                            <img src={OneIcon} alt="ONE Wallet" className="wallet-image-icon"></img>
-                            <p className="wallet-text">ONE Wallet</p>
-                        </div>
+                        <p className="pop-up-window-wallet-notice">This site currently only supports Metamask. Sorry for any inconvenience!</p>
                     </div>
                 </OutsideAlerter>
             </div>

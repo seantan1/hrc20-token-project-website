@@ -14,7 +14,14 @@ import {
     VAULT_CONTRACT_ABI
 } from '../../contract-data/token-contract-data.js';
 
-const MAX_DEPOSIT_DURATION = 180;
+import {
+    HARMONY_MAIN_NET_BLOCK_EXPLORER_TX_URL
+} from '../../contract-data/harmony-data.js';
+
+const harmonyBlockExplorerUrl = HARMONY_MAIN_NET_BLOCK_EXPLORER_TX_URL;
+const MIN_DEPOSIT_DURATION = 30;
+const MAX_DEPOSIT_DURATION = 100;
+
 
 // CssTextField
 const CssTextField = withStyles({
@@ -98,6 +105,7 @@ const Deposits = (props) => {
             });
             props.setRefreshData(false);
         }
+
     }, [props, props.authorised, props.account, userDepositDataLoading, props.refreshData]);
 
     const createDeposit = () => {
@@ -117,7 +125,7 @@ const Deposits = (props) => {
             return;
         }
         // duration check
-        if (parseInt(depositDuration) < 30 || parseInt(depositDuration) > 180 || !parseInt(depositDuration)) {
+        if (parseInt(depositDuration) < MIN_DEPOSIT_DURATION || parseInt(depositDuration) > MAX_DEPOSIT_DURATION || !parseInt(depositDuration)) {
             setDepositDurationError(true);
             return;
         }
@@ -126,28 +134,30 @@ const Deposits = (props) => {
 
         let contractVault = new web3.eth.Contract(VAULT_CONTRACT_ABI, VAULT_CONTRACT_ADDRESS);
         let amount_ether = web3.utils.toWei(depositAmount, 'ether');
+        // console.log("hello");
 
         contractVault.methods.createDeposit(parseInt(depositDuration), amount_ether).send({
             from: props.account
         })
+            // .then(function (result) {
+            //     console.log(result); // DEBUG LOG
+            //     props.setRefreshData(true);
+            //     props.showAlert('Deposit success!', 'View transaction', "www.facebook.com", 'success');
+            // });
         .on('transactionHash', function(hash){
-            props.setTransactionPending(true);
+            // props.setTransactionPending(true);
             // console.log(hash);
+            props.showAlert('Transaction pending', '', "", 'info');
         })
         .on('receipt', function(receipt){
-            // console.log(confirmationNumber);
-            console.log(receipt);
-            props.setTransactionPending(false);
+            console.log(receipt['transactionHash']);
+            // props.setTransactionPending(false);
             props.setRefreshData(true)
-            props.showAlert('Deposit success!', 'View transaction', "www.facebook.com", 'success');
+            props.showAlert('Deposit success!', 'View transaction', harmonyBlockExplorerUrl+receipt['transactionHash'], 'success');
         }).on('error', function(error){
-
+            props.showAlert('Deposit failed!', '', "", 'error');
         });
-        // .then(function (result) {
-        //     console.log(result); // DEBUG LOG
 
-        //     props.setRefreshData(true);
-        // });
     }
 
     const increaseAllowance = () => {
@@ -165,17 +175,20 @@ const Deposits = (props) => {
         contract.methods.approve(VAULT_CONTRACT_ADDRESS, amount_ether).send({
             from: props.account
         })
-        .on('transactionHash', function(hash){
-            props.setTransactionPending(true);
-            // console.log(hash);
-        })
-        .on('receipt', function(receipt){
-            // console.log(confirmationNumber);
-            console.log(receipt);
-            props.setTransactionPending(false);
-            props.showAlert('Approved allowance', 'View transaction', "www.facebook.com", 'success');
-        })
-        
+            .on('transactionHash', function (hash) {
+                props.setTransactionPending(true);
+                // console.log(hash);
+            })
+            .on('receipt', function (receipt) {
+                // console.log(confirmationNumber);
+                console.log(receipt);
+                props.setTransactionPending(false);
+                props.showAlert('Approved allowance', '', "", 'success');
+            })
+            .on('error', function(error){
+                props.showAlert('Approve failed!', '', "", 'error');
+            });
+
         // .then(function (result) {
         //     console.log(result); // DEBUG LOG
         // });
@@ -183,20 +196,20 @@ const Deposits = (props) => {
 
     return (
         <div className="deposits">
-        <div className="deposits-container">
-        {
-            userDepositIds.length === 0 ? 
-            <p id="no-deposits-text">No deposits found.</p>
-            :
-            <div className="deposit-box-container">
-                {userDepositIds.map(mapping => (
-                    <DepositBox key={mapping} authorised={props.authorised} depositId={mapping} account={props.account} refreshData={props.refreshData} setRefreshData={props.setRefreshData} setTransactionPending={props.setTransactionPending} toggleForfeitDepositWindowOpen={props.toggleForfeitDepositWindowOpen}/>
-                ))}
+            <div className="deposits-container">
+                {
+                    userDepositIds.length === 0 ?
+                        <p id="no-deposits-text">No deposits found.</p>
+                        :
+                        <div className="deposit-box-container">
+                            {userDepositIds.map(mapping => (
+                                <DepositBox key={mapping} authorised={props.authorised} depositId={mapping} account={props.account} refreshData={props.refreshData} setRefreshData={props.setRefreshData} setTransactionPending={props.setTransactionPending} toggleForfeitDepositWindowOpen={props.toggleForfeitDepositWindowOpen} showAlert={props.showAlert} />
+                            ))}
+                        </div>
+                }
             </div>
-        }
-        </div>
-        
-            
+
+
             <div id="new-deposit" className="new-deposit-container">
                 <h1>New Deposit</h1>
                 {depositAmountError && <p className="deposit-form-text-warning">Please enter a valid amount.</p>}
@@ -215,7 +228,7 @@ const Deposits = (props) => {
                         <span className="form-field-max-text" onClick={() => { setDepositDuration(MAX_DEPOSIT_DURATION) }}>MAX</span>
                     </div>
                 </div>
-                <p>Min: 30 days | Max: 180 days</p>
+                <p>Min: {MIN_DEPOSIT_DURATION} days | Max: {MAX_DEPOSIT_DURATION} days</p>
 
                 {(parseInt(depositAmount) > 0 && parseInt(userAllowance) < parseInt(depositAmount) && props.authorised) ?
                     <button className="deposit-claim-button" onClick={increaseAllowance}>Approve</button>

@@ -4,7 +4,7 @@ import '../../../node_modules/font-awesome/css/font-awesome.css';
 import PuruBrandWhite from '../../assets/white/4.png';
 import PuruBrandBlack from '../../assets/black/4.png';
 import PuruBrandPink from '../../assets/pink/4.png';
-import loadingGIF from '../../assets/loading-icon-transparent-background-12.jpg';
+// import loadingGIF from '../../assets/loading-icon-transparent-background-12.jpg';
 
 const Navbar = (props) => {
 
@@ -78,12 +78,7 @@ const Navbar = (props) => {
                                 </div>
                             }
                         </div>
-                        {props.transactionPending &&
-                            <div className="tx-pending-container">
-                                <img src={loadingGIF} id="loading-gif" alt="loading"></img>
-                                <p style={{ color: fontColor }}>Transaction pending</p>
-                            </div>
-                        }
+                        
                         <div className="connect-wallet-button-container">
                             {!props.authorised && <button className="connect-wallet-button" onClick={props.toggleWalletWindow}>Connect Wallet</button>}
                             {props.authorised && <button className="connect-wallet-button" onClick={props.toggleWalletWindow}>{props.account.substring(0, 11)}...</button>}

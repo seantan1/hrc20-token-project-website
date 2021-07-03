@@ -46,7 +46,7 @@ const Info = () => {
             <p>Users can have unlimited deposits at a time and stack as much rating as they like, as more rating would mean a bigger share 
             in slash fees collected in the reward pool. Your share in the pool is calculated as such:</p>
             <p>Your share = ( Your Total rating ) / ( Total rating of all users ) x 100%</p>
-            <p>Example: If your rating is 100 and the total rating of all users is 1000, you own 10% in the reward pool share (with some deductions explained below).</p>
+            <p>Example: If your rating is 100 and the total rating of all users is 1000, you own 10% in the reward pool share (excluding the bounty reward and dev cut explained below).</p>
             <br></br>
             <p>As to not impose a force lock on users, there is a forfeit option for any locked deposit, where only 50% of the tokens will 
             be returned to the user while the rest goes into the developer's vualt. This is so that in the case any user accidentally forfeited their 
@@ -86,7 +86,7 @@ const Info = () => {
             <h3>Project Goals</h3>
             <p>This project is designed to be a long term project where the profits of long-term holders are cared for 
             and protected. Future projects such as the NFT gacha expansion and PURUSWAP will give additional incentives 
-            to the current $PURU holders, such aims to appreciate the price of $PURU. Collaborations with other projects 
+            to the current $PURU holders, which aims to appreciate the price of $PURU. Collaborations with other projects 
             (currently still TBA as to not give empty promises) will also allow users to spend their credits for some special benefits and entitlements.</p>
 
             <p className="red-text">All important information ends here.</p>
