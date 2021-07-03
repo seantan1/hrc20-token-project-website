@@ -1,4 +1,4 @@
-export const TOKEN_CONTRACT_ADDRESS = '0x005B8382D84fE5976b713e7c1F1006c5A94c0424';
+export const TOKEN_CONTRACT_ADDRESS = '0xB2d90BcfE159ae10f2d6A7bbe453Df26FCa81DCf';
 export const TOKEN_CONTRACT_ABI = [
     {
       "inputs": [],
@@ -98,7 +98,8 @@ export const TOKEN_CONTRACT_ABI = [
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -131,7 +132,8 @@ export const TOKEN_CONTRACT_ABI = [
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -144,7 +146,8 @@ export const TOKEN_CONTRACT_ABI = [
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -157,7 +160,8 @@ export const TOKEN_CONTRACT_ABI = [
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -170,7 +174,8 @@ export const TOKEN_CONTRACT_ABI = [
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -189,7 +194,8 @@ export const TOKEN_CONTRACT_ABI = [
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -237,7 +243,8 @@ export const TOKEN_CONTRACT_ABI = [
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -383,7 +390,8 @@ export const TOKEN_CONTRACT_ABI = [
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -396,7 +404,8 @@ export const TOKEN_CONTRACT_ABI = [
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -441,7 +450,8 @@ export const TOKEN_CONTRACT_ABI = [
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -478,7 +488,8 @@ export const TOKEN_CONTRACT_ABI = [
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -509,11 +520,12 @@ export const TOKEN_CONTRACT_ABI = [
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     }
   ];
 
-export const VAULT_CONTRACT_ADDRESS = '0xE118D9Ec81545A7633A12ff1DC2012CbDE6FE430';
+export const VAULT_CONTRACT_ADDRESS = '0xDEb531ef204c98842f7f2E3C241439cd914D38FE';
 export const VAULT_CONTRACT_ABI = [
     {
       "inputs": [],
@@ -524,7 +536,7 @@ export const VAULT_CONTRACT_ABI = [
       "anonymous": false,
       "inputs": [
         {
-          "indexed": false,
+          "indexed": true,
           "internalType": "address",
           "name": "depositOwner",
           "type": "address"
@@ -543,6 +555,12 @@ export const VAULT_CONTRACT_ABI = [
       "anonymous": false,
       "inputs": [
         {
+          "indexed": true,
+          "internalType": "address",
+          "name": "caller",
+          "type": "address"
+        },
+        {
           "indexed": false,
           "internalType": "uint256",
           "name": "amount",
@@ -556,7 +574,26 @@ export const VAULT_CONTRACT_ABI = [
       "anonymous": false,
       "inputs": [
         {
+          "indexed": true,
+          "internalType": "address",
+          "name": "depositOwner",
+          "type": "address"
+        },
+        {
           "indexed": false,
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "ForfeitDeposit",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
           "internalType": "address",
           "name": "depositOwner",
           "type": "address"
@@ -688,6 +725,20 @@ export const VAULT_CONTRACT_ABI = [
     {
       "inputs": [],
       "name": "getTotalDistributedRewards",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function",
+      "constant": true
+    },
+    {
+      "inputs": [],
+      "name": "getTotalForfeitedToDevs",
       "outputs": [
         {
           "internalType": "uint256",

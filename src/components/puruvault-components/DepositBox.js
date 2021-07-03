@@ -9,6 +9,12 @@ import {
     VAULT_CONTRACT_ABI
 } from '../../contract-data/token-contract-data.js';
 
+import {
+    HARMONY_MAIN_NET_BLOCK_EXPLORER_TX_URL
+} from '../../contract-data/harmony-data.js';
+
+const harmonyBlockExplorerUrl = HARMONY_MAIN_NET_BLOCK_EXPLORER_TX_URL;
+
 // bignumber config
 const BigNumber = require('bignumber.js');
 BigNumber.config({ DECIMAL_PLACES: 2 }) ;
@@ -61,14 +67,15 @@ const DepositBox = (props) => {
                 from: props.account
             })
             .on('transactionHash', function(hash){
-                props.setTransactionPending(true);
+                // props.setTransactionPending(true);
                 // console.log(hash);
+                props.showAlert('Transaction pending', '', "", 'info');
             })
             .on('receipt', function(receipt){
                 // console.log(confirmationNumber);
-                console.log(receipt);
-                props.showAlert('Claim Deposit success!', 'View transaction', "www.facebook.com", 'success');
-                props.setTransactionPending(false);
+                // console.log(receipt);
+                props.showAlert('Claim success!', 'View transaction', harmonyBlockExplorerUrl+receipt['transactionHash'], 'success');
+                // props.setTransactionPending(false);
                 props.setRefreshData(true)
             })
             // .then(function (result) {

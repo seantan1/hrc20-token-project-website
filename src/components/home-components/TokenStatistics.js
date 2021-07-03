@@ -43,7 +43,7 @@ const TokenStatistics = (props) => {
                     <div className="stats-section-inner-frame-inner">
                         <div className="stats-container">
                             <h1>Total Supply</h1>
-                            <p>1 million <span className="pink-text">$PURU</span></p>
+                            <p>10 million <span className="pink-text">$PURU</span></p>
                         </div>
                         <div className="stats-container">
                             <h1>Locked in Vault</h1>

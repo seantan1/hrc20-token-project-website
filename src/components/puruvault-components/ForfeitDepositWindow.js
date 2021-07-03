@@ -12,6 +12,12 @@ import {
 // outside alerter hook
 import OutsideAlerter from "../hooks/OutsideAlerter";
 
+import {
+    HARMONY_MAIN_NET_BLOCK_EXPLORER_TX_URL
+} from '../../contract-data/harmony-data.js';
+
+const harmonyBlockExplorerUrl = HARMONY_MAIN_NET_BLOCK_EXPLORER_TX_URL;
+
 // bignumber config
 const BigNumber = require('bignumber.js');
 BigNumber.config({ DECIMAL_PLACES: 2 }) ;
@@ -30,14 +36,15 @@ export default function ForfeitDepositWindow(props) {
                 from: props.account
             })
             .on('transactionHash', function(hash){
-                props.setTransactionPending(true);
+                // props.setTransactionPending(true);
+                props.showAlert('Transaction pending', '', "", 'info');
                 handleCloseButton();
             })
             .on('receipt', function(receipt){
                 // console.log(confirmationNumber);
-                console.log(receipt);
-                props.showAlert('Forfeit Deposit success!', 'View transaction', "www.facebook.com", 'success');
-                props.setTransactionPending(false);
+                // console.log(receipt);
+                props.showAlert('Forfeit Deposit success!', 'View transaction', harmonyBlockExplorerUrl+receipt['transactionHash'], 'success');
+                // props.setTransactionPending(false);
                 props.setRefreshData(true)
             })
         }

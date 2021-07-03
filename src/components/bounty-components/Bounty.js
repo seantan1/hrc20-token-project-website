@@ -12,6 +12,12 @@ import {
     VAULT_CONTRACT_ABI
 } from '../../contract-data/token-contract-data.js';
 
+import {
+    HARMONY_MAIN_NET_BLOCK_EXPLORER_TX_URL
+} from '../../contract-data/harmony-data.js';
+
+const harmonyBlockExplorerUrl = HARMONY_MAIN_NET_BLOCK_EXPLORER_TX_URL;
+
 // bignumber config
 const BigNumber = require('bignumber.js');
 BigNumber.config({ DECIMAL_PLACES: 2 });
@@ -23,10 +29,9 @@ const Bounty = (props) => {
 
     useEffect(() => {
         if (props.authorised) {
-            console.log("called");
             let web3 = new Web3(window.ethereum);
             let contract = new web3.eth.Contract(TOKEN_CONTRACT_ABI, TOKEN_CONTRACT_ADDRESS);
-            // let contractVault = new web3.eth.Contract(VAULT_CONTRACT_ABI, VAULT_CONTRACT_ADDRESS);
+            let contractVault = new web3.eth.Contract(VAULT_CONTRACT_ABI, VAULT_CONTRACT_ADDRESS);
 
             contract.methods.getDispensableRewards().call().then(function (result) {
                 let bn = new BigNumber(web3.utils.fromWei(result)).div(1);
@@ -36,8 +41,15 @@ const Bounty = (props) => {
                 props.setRefreshData(false);
             });
 
-            // event listener
+            // event listener for slashfeecollected
             contract.events.SlashFeeCollected()
+                .on("data", function (event) {
+                    // console.log(event.returnValues);
+                    props.setRefreshData(true);
+                });
+
+            // event listener for distribute rewards
+            contractVault.events.DistributeRewards()
                 .on("data", function (event) {
                     // console.log(event.returnValues);
                     props.setRefreshData(true);
@@ -58,19 +70,20 @@ const Bounty = (props) => {
         contractVault.methods.distributeRewards().send({
             from: props.account
         })
-            .on('transactionHash', function (hash) {
-                props.setTransactionPending(true);
-                // console.log(hash);
-            })
-            .on('receipt', function (receipt) {
-                // console.log(confirmationNumber);
-                console.log(receipt);
-                props.setTransactionPending(false);
-                props.setRefreshData(true)
-                props.showAlert('Claim Bounty success!', 'View transaction', "www.facebook.com", 'success');
-            }).on('error', function (error) {
-                props.showAlert('Claim Bounty failed!', '', "", 'error');
-            });
+        .on('transactionHash', function (hash) {
+            // props.setTransactionPending(true);
+            // console.log(hash);
+            props.showAlert('Transaction pending', '', "", 'info');
+        })
+        .on('receipt', function (receipt) {
+            // console.log(confirmationNumber);
+            // console.log(receipt);
+            // props.setTransactionPending(false);
+            props.setRefreshData(true)
+            props.showAlert('Deposit success!', 'View transaction', harmonyBlockExplorerUrl+receipt['transactionHash'], 'success');
+        }).on('error', function (error) {
+            props.showAlert('Claim Bounty failed!', '', "", 'error');
+        });
     }
 
     return (

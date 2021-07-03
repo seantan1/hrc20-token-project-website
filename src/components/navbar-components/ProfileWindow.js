@@ -52,6 +52,8 @@ export default function ProfileWindow(props) {
             });
 
             contractVault.methods.getRewardSharePercentage(props.account).call().then(function (result) {
+                // console.log("result");
+                // console.log(result);
                 let rewardShare = result / 10000000;
                 if (rewardShare > 0 && rewardShare < 1 / 1000000) {
                     rewardShare = "<0.00001";

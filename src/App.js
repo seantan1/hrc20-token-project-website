@@ -31,6 +31,36 @@ import Bounty from './components/bounty-components/Bounty';
 // info
 import Info from './components/info-components/Info';
 
+// harmony data
+// main net
+import {
+    HARMONY_MAIN_NET_VERSION,
+    HARMONY_MAINNET_DATA,
+    HARMONY_MAIN_NET_BLOCK_EXPLORER_TX_URL,
+    HARMONY_MAIN_NET_RPC_URL
+} from './contract-data/harmony-data.js';
+// test net
+// import {
+//     HARMONY_TEST_NET_VERSION,
+//     HARMONY_TESTNET_DATA,
+//     HARMONY_TEST_NET_BLOCK_EXPLORER_TX_URL,
+//     HARMONY_TEST_NET_RPC_URL
+// } from './contract-data/harmony-data.js';
+
+// main net
+const harmonyNetVersion = HARMONY_MAIN_NET_VERSION;
+const harmonyNetData = HARMONY_MAINNET_DATA;
+// eslint-disable-next-line
+const harmonyBlockExplorerUrl = HARMONY_MAIN_NET_BLOCK_EXPLORER_TX_URL;
+// eslint-disable-next-line
+const harmonyRpcUrl = HARMONY_MAIN_NET_RPC_URL;
+
+// test net
+// const harmonyNetVersion = HARMONY_TEST_NET_VERSION;
+// const harmonyNetData = HARMONY_TESTNET_DATA;
+// const harmonyBlockExplorerUrl = HARMONY_TEST_NET_BLOCK_EXPLORER_TX_URL;
+// const harmonyRpcUrl = HARMONY_TEST_NET_RPC_URL;
+
 function App() {
     /* user's wallet account useStates
         account: user's account address 0x... or one....
@@ -137,16 +167,16 @@ function App() {
         // detect Network account change
         provider.on('networkChanged', (networkId) => {
             // console.log('networkChanged', networkId);
-            // if (window.ethereum.networkVersion !== harmonyNetVersion) {
-            //     setAuthorised(false);
-            //     setAccount('');
-            // }
+            if (window.ethereum.networkVersion !== harmonyNetVersion) {
+                setAuthorised(false);
+                setAccount('');
+            }
         });
 
-        // if (window.ethereum.networkVersion !== harmonyNetVersion) {
-        //     const data = harmonyNetData;
-        //     await window.ethereum.request({ method: 'wallet_addEthereumChain', params: data });
-        // }
+        if (window.ethereum.networkVersion !== harmonyNetVersion) {
+            const data = harmonyNetData;
+            await window.ethereum.request({ method: 'wallet_addEthereumChain', params: data });
+        }
 
         attemptMetamaskConnection(provider);
     };
@@ -203,7 +233,7 @@ function App() {
                             <CreditsStoreBanner authorised={authorised} account={account} />
                         </Route>
                         <Route exact path='/bounty'>
-                            <Bounty authorised={authorised} account={account} toggleWindow={toggleWalletWindow} setTransactionPending={setTransactionPending} refreshData={refreshData} setRefreshData={setRefreshData} />
+                            <Bounty authorised={authorised} account={account} toggleWindow={toggleWalletWindow} setTransactionPending={setTransactionPending} refreshData={refreshData} setRefreshData={setRefreshData} showAlert={showAlert} />
                         </Route>
                         <Route exact path='/info'>
                             <Info />
