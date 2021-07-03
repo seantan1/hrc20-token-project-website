@@ -75,6 +75,7 @@
 
 /* Responsive */
 @media (max-width: 1000px) {
+    
     .tokenomics-section-inner-frame-inner {
         display: block;
     }
@@ -84,4 +85,9 @@
     .tokenomics-info-container {
         width:auto;
     }
+}
+@media (max-width: 500px) {
+    .tokenomics-section h1 {
+        font-size: 20px; 
+     }
 }
