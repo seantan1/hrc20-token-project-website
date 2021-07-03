@@ -31,6 +31,9 @@ import Bounty from './components/bounty-components/Bounty';
 // info
 import Info from './components/info-components/Info';
 
+// temp notice
+import TempNotice from './components/temporary-site-notices/Notice';
+
 // harmony data
 // main net
 import {
@@ -221,6 +224,7 @@ function App() {
                     <Switch>
                         <Route exact path='/'>
                             <HomeBanner />
+                            <TempNotice />
                             <TokenStatistics authorised={authorised} />
                             <Tokenomics />
                             <FutureProjects />
