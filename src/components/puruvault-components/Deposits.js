@@ -150,7 +150,7 @@ const Deposits = (props) => {
             props.showAlert('Transaction pending', '', "", 'info');
         })
         .on('receipt', function(receipt){
-            console.log(receipt['transactionHash']);
+            // console.log(receipt['transactionHash']);
             // props.setTransactionPending(false);
             props.setRefreshData(true)
             props.showAlert('Deposit success!', 'View transaction', harmonyBlockExplorerUrl+receipt['transactionHash'], 'success');
