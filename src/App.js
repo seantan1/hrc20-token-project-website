@@ -255,7 +255,7 @@ function App() {
                             <FutureProjects />
                         </Route>
                         <Route exact path='/vault'>
-                            <VaultBanner account={account} authorised={authorised} refreshData={refreshData} />
+                            <VaultBanner account={account} authorised={authorised} refreshData={refreshData} setRefreshData={setRefreshData} />
                             <Deposits account={account} authorised={authorised} toggleWindow={toggleWalletWindow} refreshData={refreshData} setRefreshData={setRefreshData} setTransactionPending={setTransactionPending} showAlert={showAlert} toggleForfeitDepositWindowOpen={toggleForfeitDepositWindowOpen}/>
                         </Route>
                         <Route exact path='/credits-store'>

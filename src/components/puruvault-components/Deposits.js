@@ -3,6 +3,11 @@ import { useState, useEffect } from 'react';
 import TextField from '@material-ui/core/TextField';
 import { withStyles } from "@material-ui/core/styles";
 import Web3 from 'web3';
+// import InputLabel from '@material-ui/core/InputLabel';
+// import MenuItem from '@material-ui/core/MenuItem';
+// import FormHelperText from '@material-ui/core/FormHelperText';
+// import FormControl from '@material-ui/core/FormControl';
+// import Select from '@material-ui/core/Select';
 
 import DepositBox from './DepositBox';
 
@@ -52,6 +57,16 @@ const CssTextField = withStyles({
     }
 })(TextField);
 
+// const useStyles = makeStyles((theme) => ({
+//     formControl: {
+//       margin: theme.spacing(1),
+//       minWidth: 120,
+//     },
+//     selectEmpty: {
+//       marginTop: theme.spacing(2),
+//     },
+//   }));
+
 const Deposits = (props) => {
 
     const [depositAmount, setDepositAmount] = useState(0);
@@ -78,6 +93,32 @@ const Deposits = (props) => {
     // const [userDepositIds, setUserDepositIds] = useState();
     const [userDepositIds, setUserDepositIds] = useState([]);
     const [userDepositDataLoading, setUserDepositDataLoading] = useState(true);
+
+    // // filter by All, Ready or In-progress
+    // const [depositFilter, setDepositFilter] = useState('All');
+    // // event handler for depositFilter
+    // const depositFilterHandler = (event) => {
+    //     setDepositFilter(event.target.value);
+    //     if (props.authorised) {
+    //         props.setRefreshData(true);
+    //         setUserDepositDataLoading(true);
+    //     }
+    // }
+    // <div className="deposit-filter-form-container">
+    //                 <FormControl className="deposit-filter-form">
+    //                     <InputLabel id="demo-simple-select-label">Filter by</InputLabel>
+    //                     <Select
+    //                         labelId="demo-simple-select-label"
+    //                         id="demo-simple-select"
+    //                         value={depositFilter}
+    //                         onChange={depositFilterHandler}
+    //                     >
+    //                         <MenuItem value={'All'}>All</MenuItem>
+    //                         <MenuItem value={'Claimable'}>Claimable</MenuItem>
+    //                         <MenuItem value={'In-progress'}>In-progress</MenuItem>
+    //                     </Select>
+    //                 </FormControl>
+    //             </div>
 
     useEffect(() => {
         if (props.authorised) {
@@ -144,19 +185,19 @@ const Deposits = (props) => {
             //     props.setRefreshData(true);
             //     props.showAlert('Deposit success!', 'View transaction', "www.facebook.com", 'success');
             // });
-        .on('transactionHash', function(hash){
-            // props.setTransactionPending(true);
-            // console.log(hash);
-            props.showAlert('Transaction pending', '', "", 'info');
-        })
-        .on('receipt', function(receipt){
-            console.log(receipt['transactionHash']);
-            // props.setTransactionPending(false);
-            props.setRefreshData(true)
-            props.showAlert('Deposit success!', 'View transaction', harmonyBlockExplorerUrl+receipt['transactionHash'], 'success');
-        }).on('error', function(error){
-            props.showAlert('Deposit failed!', '', "", 'error');
-        });
+            .on('transactionHash', function (hash) {
+                // props.setTransactionPending(true);
+                // console.log(hash);
+                props.showAlert('Transaction pending', '', "", 'info');
+            })
+            .on('receipt', function (receipt) {
+                // console.log(receipt['transactionHash']);
+                // props.setTransactionPending(false);
+                props.setRefreshData(true)
+                props.showAlert('Deposit success!', 'View transaction', harmonyBlockExplorerUrl + receipt['transactionHash'], 'success');
+            }).on('error', function (error) {
+                props.showAlert('Deposit failed!', '', "", 'error');
+            });
 
     }
 
@@ -185,7 +226,7 @@ const Deposits = (props) => {
                 props.setTransactionPending(false);
                 props.showAlert('Approved allowance', '', "", 'success');
             })
-            .on('error', function(error){
+            .on('error', function (error) {
                 props.showAlert('Approve failed!', '', "", 'error');
             });
 
@@ -197,6 +238,8 @@ const Deposits = (props) => {
     return (
         <div className="deposits">
             <div className="deposits-container">
+                
+
                 {
                     userDepositIds.length === 0 ?
                         <p id="no-deposits-text">No deposits found.</p>

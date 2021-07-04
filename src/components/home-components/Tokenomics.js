@@ -15,7 +15,7 @@ const Tokenomics = () => {
                     <div className="tokenomics-section-inner-frame-inner">
                         <div className="tokenomics-container">
                             <h1>20%</h1>
-                            <h3>Fee on tranfer</h3>
+                            <h3>Fee on transfer</h3>
                             <p>
                                 A slash fee is collected from panic sellers into the vault which are distributed to chad stakers.
                             </p>

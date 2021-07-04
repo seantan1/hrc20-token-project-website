@@ -12,7 +12,7 @@ import {
 
 // bignumber config
 const BigNumber = require('bignumber.js');
-BigNumber.config({ DECIMAL_PLACES: 2 }) ;
+BigNumber.config({ DECIMAL_PLACES: 2 });
 
 const Banner = (props) => {
 
@@ -32,12 +32,30 @@ const Banner = (props) => {
             });
 
             contractVault.methods.getRewardSharePercentage(props.account).call().then(function (result) {
-                let rewardShare = result/10000000;
-                if (rewardShare > 0 && rewardShare < 1/1000000) {
+                let rewardShare = result / 10000000;
+                if (rewardShare > 0 && rewardShare < 1 / 1000000) {
                     rewardShare = "<0.00001";
                 }
                 setUserShareInRewards(rewardShare);
             });
+
+            // event listener for new deposit
+            contractVault.events.NewDeposit({ depositOwner: props.account })
+                .on("data", function (event) {
+                    props.setRefreshData(true);
+                });
+
+            // event listener for claim deposit
+            contractVault.events.ClaimDeposit({ depositOwner: props.account })
+                .on("data", function (event) {
+                    props.setRefreshData(true);
+                });
+
+            // event listener for forfeit deposit
+            contractVault.events.ForfeitDeposit({ depositOwner: props.account })
+                .on("data", function (event) {
+                    props.setRefreshData(true);
+                });
         }
     }, [props.authorised, props.account, props.refreshData]);
 

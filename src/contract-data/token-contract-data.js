@@ -525,7 +525,7 @@ export const TOKEN_CONTRACT_ABI = [
     }
   ];
 
-export const VAULT_CONTRACT_ADDRESS = '0xDEb531ef204c98842f7f2E3C241439cd914D38FE';
+export const VAULT_CONTRACT_ADDRESS = '0x373D79CD8B31de4bEBde2b7FF7e12DB36D597771';
 export const VAULT_CONTRACT_ABI = [
     {
       "inputs": [],
@@ -631,6 +631,44 @@ export const VAULT_CONTRACT_ABI = [
         }
       ],
       "name": "OwnershipTransferred",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "_address",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "RewardCredits",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "_address",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "SpendCredits",
       "type": "event"
     },
     {
@@ -927,17 +965,38 @@ export const VAULT_CONTRACT_ABI = [
     {
       "inputs": [
         {
-          "internalType": "uint256",
-          "name": "_credits",
-          "type": "uint256"
-        },
-        {
           "internalType": "address",
-          "name": "_providerAddress",
+          "name": "_address",
           "type": "address"
         }
       ],
-      "name": "claimBenefit",
+      "name": "addToAuthorisedContracts",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_address",
+          "type": "address"
+        }
+      ],
+      "name": "removeFromAuthorisedContracts",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_address",
+          "type": "address"
+        }
+      ],
+      "name": "isAuthorisedContract",
       "outputs": [
         {
           "internalType": "bool",
@@ -945,6 +1004,43 @@ export const VAULT_CONTRACT_ABI = [
           "type": "bool"
         }
       ],
+      "stateMutability": "view",
+      "type": "function",
+      "constant": true
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_address",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_credits",
+          "type": "uint256"
+        }
+      ],
+      "name": "rewardCredits",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_address",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_credits",
+          "type": "uint256"
+        }
+      ],
+      "name": "spendCredits",
+      "outputs": [],
       "stateMutability": "nonpayable",
       "type": "function"
     }
