@@ -153,6 +153,11 @@
     font-size: 15px;
 }
 
+.deposit-filter-form {
+    width: 200px;
+    margin:auto;
+}
+
 /* Responsive */
 @media (max-width: 600px) {
     .deposits {
