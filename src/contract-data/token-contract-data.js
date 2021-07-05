@@ -525,7 +525,7 @@ export const TOKEN_CONTRACT_ABI = [
     }
   ];
 
-export const VAULT_CONTRACT_ADDRESS = '0x373D79CD8B31de4bEBde2b7FF7e12DB36D597771';
+export const VAULT_CONTRACT_ADDRESS = '0xae96Ecc31aEa063D050627E763fD4EB4D2b52BAF';
 export const VAULT_CONTRACT_ABI = [
     {
       "inputs": [],
@@ -682,8 +682,7 @@ export const VAULT_CONTRACT_ABI = [
         }
       ],
       "stateMutability": "view",
-      "type": "function",
-      "constant": true
+      "type": "function"
     },
     {
       "inputs": [],
@@ -729,8 +728,7 @@ export const VAULT_CONTRACT_ABI = [
         }
       ],
       "stateMutability": "view",
-      "type": "function",
-      "constant": true
+      "type": "function"
     },
     {
       "inputs": [],
@@ -743,8 +741,7 @@ export const VAULT_CONTRACT_ABI = [
         }
       ],
       "stateMutability": "view",
-      "type": "function",
-      "constant": true
+      "type": "function"
     },
     {
       "inputs": [],
@@ -757,8 +754,7 @@ export const VAULT_CONTRACT_ABI = [
         }
       ],
       "stateMutability": "view",
-      "type": "function",
-      "constant": true
+      "type": "function"
     },
     {
       "inputs": [],
@@ -771,8 +767,7 @@ export const VAULT_CONTRACT_ABI = [
         }
       ],
       "stateMutability": "view",
-      "type": "function",
-      "constant": true
+      "type": "function"
     },
     {
       "inputs": [],
@@ -785,8 +780,7 @@ export const VAULT_CONTRACT_ABI = [
         }
       ],
       "stateMutability": "view",
-      "type": "function",
-      "constant": true
+      "type": "function"
     },
     {
       "inputs": [
@@ -805,11 +799,54 @@ export const VAULT_CONTRACT_ABI = [
         }
       ],
       "stateMutability": "view",
-      "type": "function",
-      "constant": true
+      "type": "function"
     },
     {
-      "inputs": [],
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_address",
+          "type": "address"
+        }
+      ],
+      "name": "getOwnerDepositCount",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_depositId",
+          "type": "uint256"
+        }
+      ],
+      "name": "getOwnerAddressByDepositId",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_address",
+          "type": "address"
+        }
+      ],
       "name": "getDepositsByOwner",
       "outputs": [
         {
@@ -819,8 +856,7 @@ export const VAULT_CONTRACT_ABI = [
         }
       ],
       "stateMutability": "view",
-      "type": "function",
-      "constant": true
+      "type": "function"
     },
     {
       "inputs": [
@@ -854,8 +890,7 @@ export const VAULT_CONTRACT_ABI = [
         }
       ],
       "stateMutability": "view",
-      "type": "function",
-      "constant": true
+      "type": "function"
     },
     {
       "inputs": [
@@ -874,8 +909,7 @@ export const VAULT_CONTRACT_ABI = [
         }
       ],
       "stateMutability": "view",
-      "type": "function",
-      "constant": true
+      "type": "function"
     },
     {
       "inputs": [],
@@ -888,8 +922,7 @@ export const VAULT_CONTRACT_ABI = [
         }
       ],
       "stateMutability": "view",
-      "type": "function",
-      "constant": true
+      "type": "function"
     },
     {
       "inputs": [
@@ -952,8 +985,7 @@ export const VAULT_CONTRACT_ABI = [
         }
       ],
       "stateMutability": "view",
-      "type": "function",
-      "constant": true
+      "type": "function"
     },
     {
       "inputs": [],
@@ -1005,8 +1037,7 @@ export const VAULT_CONTRACT_ABI = [
         }
       ],
       "stateMutability": "view",
-      "type": "function",
-      "constant": true
+      "type": "function"
     },
     {
       "inputs": [
