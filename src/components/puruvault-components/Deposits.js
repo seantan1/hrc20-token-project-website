@@ -119,7 +119,7 @@ const Deposits = (props) => {
     //                     </Select>
     //                 </FormControl>
     //             </div>
-
+    const [debug, setDebug] = useState('');
     useEffect(() => {
         if (props.authorised) {
             let web3 = new Web3(window.ethereum);
@@ -143,6 +143,7 @@ const Deposits = (props) => {
             }).then(function (depositIdArray) {
                 setUserDepositIds(depositIdArray);
                 setUserDepositDataLoading(false);
+                setDebug(depositIdArray);
             });
             props.setRefreshData(false);
         }
@@ -238,7 +239,7 @@ const Deposits = (props) => {
     return (
         <div className="deposits">
             <div className="deposits-container">
-                
+                <p>debug: {debug}</p>
 
                 {
                     userDepositIds.length === 0 ?
