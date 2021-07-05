@@ -143,6 +143,8 @@ const Deposits = (props) => {
             }).then(function (depositIdArray) {
                 setUserDepositIds(depositIdArray);
                 setUserDepositDataLoading(false);
+                console.log("show this to puru");
+                console.log(depositIdArray);
             });
             props.setRefreshData(false);
         }
