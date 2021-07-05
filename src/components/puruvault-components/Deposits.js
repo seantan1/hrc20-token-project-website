@@ -137,7 +137,7 @@ const Deposits = (props) => {
                 setUserTokenBalance(web3.utils.fromWei(result));
             });
 
-            contractVault.methods.getDepositsByOwner().call({
+            contractVault.methods.getDepositsByOwner(props.account).call({
                 from: props.account
             }).then(function (depositIdArray) {
                 setUserDepositIds(depositIdArray);
