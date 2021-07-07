@@ -239,7 +239,7 @@ const Deposits = (props) => {
     return (
         <div className="deposits">
             <div className="deposits-container">
-
+            <p className="vault-notice">Due to occasional Harmony RPC issues, your data might not be displayed correctly. Please try refreshing the page if that happens.</p>
                 {
                     userDepositIds.length === 0 ?
                         <p id="no-deposits-text">No deposits found.</p>

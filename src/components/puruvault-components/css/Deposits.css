@@ -158,6 +158,11 @@
     margin:auto;
 }
 
+.vault-notice {
+    text-align:center;
+    font-size: 11px;
+}
+
 /* Responsive */
 @media (max-width: 600px) {
     .deposits {

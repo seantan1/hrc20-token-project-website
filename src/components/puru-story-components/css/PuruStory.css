@@ -1,0 +1,24 @@
+.purustory {
+    padding:10px;
+    padding-bottom: 30px;
+}
+.purustory-paragraph-container {
+    width: 40%;
+    margin:auto;
+    text-align: center;
+}
+
+.purustory-paragraph-container-image {
+    width: 100px;
+}
+
+.purustory-paragraph-container p {
+    margin-top:0px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .purustory-paragraph-container {
+        width: 90%;
+    }
+}

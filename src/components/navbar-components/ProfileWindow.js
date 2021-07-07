@@ -82,6 +82,7 @@ export default function ProfileWindow(props) {
                             <h3>Your exemption quota:</h3>
                             <p>{userExemptionQuota} <span className="pink-text">$PURU</span></p>
                         </div>
+                        <p className="profile-pop-up-notice">Due to occasional Harmony RPC issues, your data might not be displayed correctly. Please try refreshing the page if that happens.</p>
                     </div>
                 </OutsideAlerter>
             </div>

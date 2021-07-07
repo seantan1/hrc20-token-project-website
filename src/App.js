@@ -30,6 +30,8 @@ import CreditsStoreBanner from './components/credits-store-components/Banner';
 import Bounty from './components/bounty-components/Bounty';
 // info
 import Info from './components/info-components/Info';
+// puru story
+import PuruStory from './components/puru-story-components/PuruStory';
 
 // temp notice
 import TempNotice from './components/temporary-site-notices/Notice';
@@ -270,6 +272,7 @@ function App() {
                         <Route render={() => <Redirect to={{ pathname: "/" }} />} />
                     </Switch>
                 </BrowserRouter>
+                <PuruStory />
                 <Footer />
             </div>
         </div>

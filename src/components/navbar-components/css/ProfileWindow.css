@@ -21,6 +21,7 @@
 
 .profile-pop-up-window-inner {
     padding: 40px;
+    padding-bottom: 20px;
     text-align: center;
 }
 
@@ -51,6 +52,11 @@
 
 #profile-puru-image {
     height: 100px;
+}
+
+.profile-pop-up-notice {
+    font-size:10px;
+    padding-top:5px;
 }
 
 /* Mobile Responsive view */
