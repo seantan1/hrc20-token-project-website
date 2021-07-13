@@ -35,7 +35,7 @@ export default function NavlinksWindow(props) {
                                     <p className="navlinks-text">Vault</p>
                                 </div>
                             </a>
-                            <a href="/credits">
+                            <a href="/credits-store">
                                 <div className="navlinks-option-container">
                                     <p className="navlinks-text">Credits Store</p>
                                 </div>
