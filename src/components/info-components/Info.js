@@ -65,7 +65,7 @@ const Info = () => {
 
             <p className="red-text">All critical information ends here.</p>
             <h3>More about the project and the one and only cowoder</h3>
-            <p>Hello, I'm pururun, the developer for everything on this project except for the cute PURU arts commissioned from <a href="https://twitter.com/HibikiDxz" target="_blank" rel="noreferrer">Shino</a>. The storytelling is done by Jax, and not forgetting the support from all the degens in the Freyala Discord Community. I am also a mini dev for Freyala and have since then passionately learned Solidity and somehow made this project possible! No forks and lame copy practices was done for this project, all 100% made from scratch, using Solidity for the contracts and React JS for the website.</p>
+            <p>Hello, I'm pururun, the developer for everything on this project except for the cute PURU arts commissioned from Shino. The storytelling is done by Jax, and not forgetting the support from all the degens in the Freyala Discord Community. I am also a mini dev for Freyala and have since then passionately learned Solidity and somehow made this project possible! No forks and lame copy practices was done for this project, all 100% made from scratch, using Solidity for the contracts and React JS for the website.</p>
             <br></br>
             <p>I chose the Harmony network for my project because the community here is just too friendly! I've never been to a community where users and developers mingle so happily together. This project is done so that everyone can have fun collecting PURUs, enjoy the storytelling and have a laugh that they made st0nks by investing in $PURU.</p>
 

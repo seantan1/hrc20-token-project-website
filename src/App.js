@@ -251,7 +251,6 @@ function App() {
                     <Switch>
                         <Route exact path='/'>
                             <HomeBanner />
-                            <TempNotice />
                             <TokenStatistics authorised={authorised} />
                             <Tokenomics />
                             <FutureProjects />
