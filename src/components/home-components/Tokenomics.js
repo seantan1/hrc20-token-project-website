@@ -49,7 +49,7 @@ const Tokenomics = () => {
                         <div className="tokenomics-info-container-outer-left">
                             <div className="tokenomics-info-container">
                                 <h1>Token Allocation</h1>
-                                <p>Inital Dex Oferring: 80%</p>
+                                <p>Inital Dex Offerring: 80%</p>
                                 <p>Future events and development funds: 20%</p>
                                 <p>Minting: disabled</p>
                             </div>
