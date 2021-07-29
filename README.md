@@ -1,2 +1,2 @@
 ## My HRC20 Token project website
-Visit my portfolio for the latest and update link
+Developed using ReactJS and using Web3 to interact with the Harmony blockchain. Visit the website [here](https://puruland.com/)
